@@ -31,6 +31,7 @@ import {
 import { OrganViewer } from "./OrganViewer";
 import { ArSheet } from "./ArSheet";
 import { DailySheet, useDailyState } from "./DailySheet";
+import { StickerBook, StickerToast } from "./StickerBook";
 import { currentStreak, isAnsweredToday } from "../lib/daily";
 import { organIds, organIdsBySystem, systemIds, type OrganId, type SystemId } from "../lib/anatomy-data";
 import {
@@ -39,7 +40,7 @@ import {
 } from "../lib/local-store";
 import { useModalA11y } from "../lib/use-modal-a11y";
 import { search as searchAnatomy } from "../lib/search";
-import { allStructureKeys, getMasteredCount, getReviewOrgan, getReviewQueue, recordAnswer, structureKey } from "../lib/progress";
+import { allStructureKeys, backfillStickers, getFoundStickerCount, getReviewOrgan, getReviewQueue, recordAnswer, structureKey } from "../lib/progress";
 import { migrateLegacyBestScores } from "../lib/local-store";
 import { store } from "../lib/storage";
 import type { LocaleConfig } from "../i18n/config";
@@ -166,6 +167,7 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
   const [panel, setPanel] = useState<Panel>(null);
   const [arOpen, setArOpen] = useState(false);
   const [dailyOpen, setDailyOpen] = useState(false);
+  const [stickersOpen, setStickersOpen] = useState(false);
   const daily = useDailyState();
   const dailyStreak = currentStreak(daily);
   const dailyWaiting = !isAnsweredToday(daily);
@@ -190,10 +192,10 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
   // Review state is read through the store so it stays in step with answers
   // recorded inside the viewer.
   const reviewDue = useSyncExternalStore(store.subscribe, () => getReviewQueue().length, () => 0);
-  // A count of body parts known, not a mastery percentage: "7 of 35" means
-  // something to an eight-year-old; "Mastery 20%" doesn't.
-  const partsKnown = useSyncExternalStore(store.subscribe, getMasteredCount, () => 0);
-  const partsTotal = useMemo(() => allStructureKeys().length, []);
+  // Stickers, not a mastery percentage: "12 of 35 stickers" means something to
+  // an eight-year-old; "Mastery 20%" doesn't.
+  const stickersFound = useSyncExternalStore(store.subscribe, getFoundStickerCount, () => 0);
+  const stickersTotal = useMemo(() => allStructureKeys().length, []);
 
   // V1 stored one best score per organ. Carry that forward once, on first
   // load, so an existing learner doesn't open V2 to an empty profile.
@@ -204,6 +206,8 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
           recordAnswer(structureKey(migratedOrganId, hotspot.id), correct, correct);
         }
       });
+      // Learners with answers from before stickers existed get what they earned.
+      backfillStickers();
     });
     // Runs once; organById is stable for the life of the page.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -231,6 +235,7 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
     setPanel(null);
     setArOpen(false);
     setDailyOpen(false);
+    setStickersOpen(false);
     setPendingStructure(null);
   };
 
@@ -344,12 +349,16 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
               <ArrowRight size={15} />
             </button>
           )}
-          <div className="library-mastery">
-            <div className="mastery-track" aria-hidden>
-              <div className="mastery-fill" style={{ width: `${partsTotal ? Math.round((partsKnown / partsTotal) * 100) : 0}%` }} />
-            </div>
-            <small>{format(t.app.kids.partsKnown, { count: String(partsKnown), total: String(partsTotal) })}</small>
-          </div>
+          <button type="button" className="library-mastery sticker-button" onClick={() => setStickersOpen(true)}>
+            <span className="sticker-button-row">
+              <Star size={15} fill="currentColor" aria-hidden />
+              <b>{t.app.stickers.button}</b>
+              <small>{format(t.app.stickers.count, { count: String(stickersFound), total: String(stickersTotal) })}</small>
+            </span>
+            <span className="mastery-track" aria-hidden>
+              <span className="mastery-fill" style={{ width: `${stickersTotal ? Math.round((stickersFound / stickersTotal) * 100) : 0}%` }} />
+            </span>
+          </button>
           <div className="organ-list">
             {results !== null && results.length === 0 && (
               <p className="organ-empty">
@@ -567,6 +576,18 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
           }}
         />
       )}
+      {stickersOpen && (
+        <StickerBook
+          organs={organs}
+          t={t}
+          onClose={() => setStickersOpen(false)}
+          onSee={(id, hotspotId) => {
+            selectOrgan(id);
+            setPendingStructure(hotspotId);
+          }}
+        />
+      )}
+      <StickerToast organById={organById} t={t} />
       {arOpen && <ArSheet key={organ.id} organ={organ} t={t} localeCode={locale.code} onClose={() => setArOpen(false)} />}
       {modal && <LearningModal type={modal} organ={organ} t={t} onClose={() => setModal(null)} />}
       {mobileLibrary && <button className="drawer-backdrop" aria-label={t.library.close} onClick={() => setMobileLibrary(false)} />}

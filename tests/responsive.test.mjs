@@ -130,3 +130,8 @@ test("tap targets meet 44px in kid mode", () => {
     assert.match(kid, rule, `${selector} is under 44px`);
   }
 });
+
+test("the library shows the sticker book, not a mastery percentage", () => {
+  assert.match(app, /sticker-button/);
+  assert.doesNotMatch(app, /quiz\.mastery/, "kids shouldn't see 'Mastery N%'");
+});

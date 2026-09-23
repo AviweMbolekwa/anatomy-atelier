@@ -124,7 +124,94 @@ export function recordAnswer(key: StructureKey, correct: boolean, firstTry = cor
   };
 
   store.set(PROGRESS_KEY, { ...all, [key]: next });
+  if (correct) awardSticker(key, next, next.lastSeenAt);
   return next;
+}
+
+// ---------------------------------------------------------------- stickers
+
+/**
+ * The child-facing face of progress. Two tiers per structure:
+ *  - found: the first correct answer — an immediate, early win;
+ *  - gold:  the structure reached mastery — the long-term goal.
+ *
+ * Unlike mastery, stickers are permanent. Mastery rightly drops after a miss
+ * (that's what schedules the review), but taking a sticker back from an
+ * eight-year-old reads as punishment, not feedback.
+ */
+export type StickerRecord = { found: string; gold?: string };
+export type StickerEvent = {
+  kind: "found" | "gold" | "organ";
+  key: StructureKey;
+  organId: OrganId;
+  at: string;
+};
+
+const STICKERS_KEY = "stickers";
+/** The most recent award, which the UI watches to celebrate it. */
+export const STICKER_EVENT_KEY = "stickers:latest";
+
+export function getStickers(): Record<StructureKey, StickerRecord> {
+  return store.get<Record<StructureKey, StickerRecord>>(STICKERS_KEY, {});
+}
+
+function awardSticker(key: StructureKey, progress: StructureProgress, at: string) {
+  const all = getStickers();
+  const previous = all[key];
+  const next: StickerRecord = previous ? { ...previous } : { found: at };
+  let kind: StickerEvent["kind"] | null = previous ? null : "found";
+  if (isMastered(progress) && !previous?.gold) {
+    next.gold = at;
+    kind = "gold";
+  }
+  if (!kind) return;
+
+  const updated = { ...all, [key]: next };
+  store.set(STICKERS_KEY, updated);
+
+  const { organId } = parseStructureKey(key);
+  const organ = structureById[organId];
+  // Finding the last missing part of an organ is its own celebration.
+  if (kind === "found" && organ?.hotspots.every((hotspot) => updated[structureKey(organId, hotspot.id)])) {
+    kind = "organ";
+  }
+  store.set(STICKER_EVENT_KEY, { kind, key, organId, at } satisfies StickerEvent);
+}
+
+/** Counts across the whole atlas — numbers, so they're stable React snapshots. */
+export function getFoundStickerCount(): number {
+  const stickers = getStickers();
+  return allStructureKeys().filter((key) => stickers[key]).length;
+}
+
+export function getGoldStickerCount(): number {
+  const stickers = getStickers();
+  return allStructureKeys().filter((key) => stickers[key]?.gold).length;
+}
+
+/**
+ * Gives existing learners the stickers their past answers already earned, so
+ * the sticker book doesn't open empty for someone with weeks of quizzes behind
+ * them. Silent: no celebration for history.
+ */
+export function backfillStickers(): number {
+  const stickers = getStickers();
+  let added = 0;
+  const next = { ...stickers };
+  for (const [key, progress] of Object.entries(getAllProgress())) {
+    if (progress.correct === 0) continue;
+    const current = next[key];
+    const gold = isMastered(progress) ? progress.lastSeenAt : undefined;
+    if (!current) {
+      next[key] = gold ? { found: progress.lastSeenAt, gold } : { found: progress.lastSeenAt };
+      added += 1;
+    } else if (gold && !current.gold) {
+      next[key] = { ...current, gold };
+      added += 1;
+    }
+  }
+  if (added) store.set(STICKERS_KEY, next);
+  return added;
 }
 
 /** Every structure in the atlas, whether or not it's been attempted. */
@@ -246,4 +333,6 @@ export function getRecentOrgans(limit = 3): OrganId[] {
 /** Clears all progress. Only ever called from an explicit user action. */
 export function resetProgress() {
   store.remove(PROGRESS_KEY);
+  store.remove(STICKERS_KEY);
+  store.remove(STICKER_EVENT_KEY);
 }
