@@ -1,0 +1,65 @@
+# Builds the static site and publishes it to GitHub Pages on every push to main.
+# The Cloudflare/vinext build (`npm run build`) is untouched; Pages uses a plain
+# Next.js static export served from /<repo-name>/.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm test
+
+      - name: Static export
+        run: npm run build:pages
+        env:
+          PAGES_BASE_PATH: /${{ github.event.repository.name }}
+          NEXT_PUBLIC_SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+
+      # A static host can't redirect "/", so send bare visits to the English
+      # page — the same thing next.config's redirect does on a server.
+      - name: Root redirect
+        run: |
+          cat > out/index.html <<'HTML'
+          <!doctype html><meta charset="utf-8"><title>Anatomy Atelier</title>
+          <meta http-equiv="refresh" content="0; url=./en/"><link rel="canonical" href="./en/">
+          <script>location.replace("./en/" + location.search + location.hash)</script>
+          <a href="./en/">Anatomy Atelier</a>
+          HTML
+          touch out/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
