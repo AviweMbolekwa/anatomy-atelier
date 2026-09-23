@@ -2,11 +2,10 @@ import type { BaseUiDictionary } from "../types";
 
 export const ui: BaseUiDictionary = {
   meta: {
-    title: "Anatomy Atelier — 예술가처럼 배우는 해부학",
-    description:
-      "심장, 뇌, 폐, 간, 콩팥, 눈, 장, 이자, 피부까지 — 의학적으로 정밀한 3D 장기를 인터랙티브 해부 아틀리에에서 살펴보세요.",
-    ogTitle: "Anatomy Atelier — 예술가처럼 배우는 해부학",
-    ogDescription: "몰입감 있고 의학적으로 정밀한 3D 표본으로 해부학을 배웁니다.",
+    title: "Anatomy Atelier — 내 몸속을 탐험해요",
+    description: "심장, 뇌, 폐 등을 3D로 탐험하고, 매일 새로운 질문에 답하고, 실제 크기의 장기를 내 방에서 보세요. 호기심 많은 아이들을 위한 해부학, 12개 언어 지원.",
+    ogTitle: "Anatomy Atelier — 내 몸속을 탐험해요",
+    ogDescription: "3D 장기, 오늘의 질문, 실제 크기 AR — 호기심 많은 아이들을 위한 해부학.",
     imageAlt: "받침대 위에 떠 있는 해부학적 심장 표본과 Anatomy Atelier 로고",
   },
   brand: { tagline: "내 몸속을 탐험해요", home: "Anatomy Atelier 홈" },

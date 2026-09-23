@@ -2,11 +2,10 @@ import type { BaseUiDictionary } from "../types";
 
 export const ui: BaseUiDictionary = {
   meta: {
-    title: "Anatomy Atelier — Apprendre l'anatomie comme un artiste",
-    description:
-      "Explorez des organes en 3D d'une précision médicale — cœur, cerveau, poumons, foie, reins, œil, intestin, pancréas et peau — dans un atelier d'anatomie interactif.",
-    ogTitle: "Anatomy Atelier — Apprendre l'anatomie comme un artiste",
-    ogDescription: "Apprenez l'anatomie comme un artiste grâce à des spécimens 3D immersifs et médicalement détaillés.",
+    title: "Anatomy Atelier — Explore ton corps de l’intérieur",
+    description: "Explore le cœur, le cerveau, les poumons et bien plus en 3D, réponds à une nouvelle question chaque jour et vois les organes en taille réelle chez toi. L’anatomie pour les enfants curieux, en 12 langues.",
+    ogTitle: "Anatomy Atelier — Explore ton corps de l’intérieur",
+    ogDescription: "Des organes en 3D, une question par jour et la réalité augmentée en taille réelle : l’anatomie pour les enfants curieux.",
     imageAlt: "Un cœur anatomique flottant au-dessus d'un socle, à côté du logotype Anatomy Atelier",
   },
   brand: { tagline: "Explore ton corps de l’intérieur", home: "Accueil d'Anatomy Atelier" },

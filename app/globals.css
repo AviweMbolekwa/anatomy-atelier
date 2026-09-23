@@ -1414,3 +1414,99 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
 @media (max-width: 760px) {
   .ar-sheet { width: 100%; border-radius: 24px 24px 0 0; padding: 24px 18px 28px; }
 }
+
+/* ===================================================== Question of the day */
+
+.main-nav .daily-tab { position: relative; }
+.daily-tab svg { color: #e0764f; }
+.daily-badge {
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  display: inline-grid;
+  place-items: center;
+  background: #f4a261;
+  color: white;
+  font: 700 11px var(--font-sans), sans-serif;
+}
+/* "A new question is waiting" — a small coral dot, gently pulsing. */
+.daily-dot {
+  position: absolute;
+  inset-block-start: 6px;
+  inset-inline-end: 8px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--coral);
+  box-shadow: 0 0 0 0 rgba(235,124,107,.5);
+  animation: daily-pulse 2s ease-out infinite;
+}
+@keyframes daily-pulse { 70% { box-shadow: 0 0 0 7px rgba(235,124,107,0); } 100% { box-shadow: 0 0 0 0 rgba(235,124,107,0); } }
+
+.daily-sheet { max-width: 520px; text-align: start; }
+.daily-sheet > em { display: block; text-align: center; }
+.daily-streak-row {
+  margin: 10px 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+/* Sans, not the display serif: its old-style "1" reads as a capital I. */
+.daily-streak-row strong { font: 700 30px/1 var(--font-sans), sans-serif; font-variant-numeric: lining-nums tabular-nums; }
+.daily-streak-row span:not(.daily-flame) { color: var(--muted); font-size: 13px; }
+.daily-streak-row small { flex-basis: 100%; text-align: center; color: var(--muted); font-size: 12px; }
+.daily-flame { color: #cbbfb5; display: grid; }
+.daily-flame.lit { color: #e0764f; }
+.daily-nudge { text-align: center; color: #86663c; font-size: 14px; }
+
+.daily-clue {
+  margin: 16px 0 8px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: rgba(198,154,94,.1);
+  color: var(--ink);
+  font: 500 18px/1.45 var(--font-serif), serif;
+}
+.daily-sheet h2 { margin: 10px 0 12px; font-size: 22px; text-align: start; }
+
+.daily-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.daily-options button {
+  min-height: 56px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255,255,255,.7);
+  color: var(--ink);
+  cursor: pointer;
+  text-align: start;
+  font: 500 16px/1.25 var(--font-serif), serif;
+}
+.daily-options button:hover:not(:disabled) { border-color: var(--coral); background: rgba(253,234,226,.7); }
+.daily-options button:disabled { cursor: default; }
+.daily-options button.is-correct { border-color: var(--sage); background: rgba(118,157,116,.16); }
+.daily-options button.is-wrong { border-color: #d98a7d; background: rgba(235,124,107,.1); color: var(--muted); }
+.daily-result { margin-top: 16px; }
+.daily-result p { margin: 0 0 6px; font-size: 15px; }
+
+@media (max-width: 760px) {
+  .daily-sheet { width: 100%; max-width: none; border-radius: 24px 24px 0 0; padding: 24px 18px 28px; }
+  .daily-options { grid-template-columns: 1fr; }
+  .main-nav .daily-dot { inset-block-start: 4px; inset-inline-end: calc(50% - 20px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .daily-dot { animation: none; }
+}
+/* The tablet/phone nav hides every <span> inside its buttons to drop text
+   labels; the streak badge, the "new question" dot and its screen-reader text
+   are content, not labels, so they opt back in. */
+.main-nav .daily-tab span.daily-badge { display: inline-grid; }
+.main-nav .daily-tab span.daily-dot { display: block; }
+.main-nav .daily-tab .sr-only { display: block; }

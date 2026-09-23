@@ -2,11 +2,10 @@ import type { BaseUiDictionary } from "../types";
 
 export const ui: BaseUiDictionary = {
   meta: {
-    title: "Anatomy Atelier — Belajar anatomi seperti seorang seniman",
-    description:
-      "Jelajahi organ 3D dengan detail medis — jantung, otak, paru-paru, hati, ginjal, mata, usus, pankreas, dan kulit — dalam sanggar anatomi interaktif.",
-    ogTitle: "Anatomy Atelier — Belajar anatomi seperti seorang seniman",
-    ogDescription: "Pelajari anatomi seperti seorang seniman melalui spesimen 3D yang imersif dan detail secara medis.",
+    title: "Anatomy Atelier — Jelajahi bagian dalam tubuhmu",
+    description: "Jelajahi jantung, otak, paru-paru, dan lainnya dalam 3D, jawab pertanyaan baru setiap hari, dan lihat organ seukuran aslinya di kamarmu. Anatomi untuk anak-anak yang penasaran, dalam 12 bahasa.",
+    ogTitle: "Anatomy Atelier — Jelajahi bagian dalam tubuhmu",
+    ogDescription: "Organ 3D, pertanyaan harian, dan AR seukuran asli — anatomi untuk anak-anak yang penasaran.",
     imageAlt: "Spesimen jantung anatomis melayang di atas alas, di samping logo Anatomy Atelier",
   },
   brand: { tagline: "Jelajahi bagian dalam tubuhmu", home: "Beranda Anatomy Atelier" },

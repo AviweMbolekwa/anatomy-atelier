@@ -2,11 +2,10 @@ import type { BaseUiDictionary } from "../types";
 
 export const ui: BaseUiDictionary = {
   meta: {
-    title: "Anatomy Atelier — 芸術家のように解剖学を学ぶ",
-    description:
-      "心臓・脳・肺・肝臓・腎臓・眼・腸・膵臓・皮膚——医学的に精緻な 3D 標本を、インタラクティブな解剖アトリエで探索できます。",
-    ogTitle: "Anatomy Atelier — 芸術家のように解剖学を学ぶ",
-    ogDescription: "没入感のある、医学的に精緻な 3D 標本で解剖学を学びましょう。",
+    title: "Anatomy Atelier — からだの中を探検しよう",
+    description: "心臓・脳・肺などを3Dで探検し、毎日新しい問題に答えて、実物大の器官をへやに出してみよう。好奇心いっぱいの子どものための解剖学アプリ。12か国語対応。",
+    ogTitle: "Anatomy Atelier — からだの中を探検しよう",
+    ogDescription: "3Dの器官、毎日の問題、実物大のAR——好奇心いっぱいの子どものための解剖学。",
     imageAlt: "台座の上に浮かぶ解剖学的な心臓標本と、Anatomy Atelier のロゴ",
   },
   brand: { tagline: "からだの中を探検しよう", home: "Anatomy Atelier ホーム" },

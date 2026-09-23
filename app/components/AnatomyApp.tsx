@@ -10,6 +10,7 @@ import {
   BrainCircuit,
   ChevronDown,
   CircleHelp,
+  Flame,
   Compass,
   Globe,
   Heart,
@@ -29,6 +30,8 @@ import {
 } from "lucide-react";
 import { OrganViewer } from "./OrganViewer";
 import { ArSheet } from "./ArSheet";
+import { DailySheet, useDailyState } from "./DailySheet";
+import { currentStreak, isAnsweredToday } from "../lib/daily";
 import { organIds, organIdsBySystem, systemIds, type OrganId, type SystemId } from "../lib/anatomy-data";
 import {
   EMPTY_NOTES, EMPTY_SAVED, getNotesSnapshot, getSavedSnapshot,
@@ -162,6 +165,10 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
   const [quizActive, setQuizActive] = useState(false);
   const [panel, setPanel] = useState<Panel>(null);
   const [arOpen, setArOpen] = useState(false);
+  const [dailyOpen, setDailyOpen] = useState(false);
+  const daily = useDailyState();
+  const dailyStreak = currentStreak(daily);
+  const dailyWaiting = !isAnsweredToday(daily);
   /** Structure to select once the organ's model is ready (set by search). */
   const [pendingStructure, setPendingStructure] = useState<string | null>(null);
   // Read through the store rather than copied into state by an effect: the
@@ -223,6 +230,7 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
     setQuizActive(false);
     setPanel(null);
     setArOpen(false);
+    setDailyOpen(false);
     setPendingStructure(null);
   };
 
@@ -276,6 +284,17 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
             aria-pressed={panel === "saved"}
           >
             <LibraryBig size={17} /> {t.nav.library}
+          </button>
+          {/* The daily habit lives in the primary nav, so on phones it's a tab
+              in the bottom bar — one thumb away, not buried in a panel. */}
+          <button
+            className={`daily-tab ${dailyOpen ? "active" : ""}`}
+            onClick={() => setDailyOpen(true)}
+            aria-pressed={dailyOpen}
+          >
+            <Flame size={17} /> {t.app.daily.tab}
+            {dailyStreak > 0 && <span className="daily-badge">{dailyStreak}</span>}
+            {dailyWaiting && <span className="daily-dot"><span className="sr-only">{t.app.daily.newQuestion}</span></span>}
           </button>
         </nav>
         <label className="search-box">
@@ -534,6 +553,18 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
           onNoteChange={onNoteChange}
           onOpenNotes={() => setPanel("notes")}
           onClose={() => setPanel(null)}
+        />
+      )}
+      {dailyOpen && (
+        <DailySheet
+          organs={organs}
+          organById={organById}
+          t={t}
+          onClose={() => setDailyOpen(false)}
+          onSee={(id, hotspotId) => {
+            selectOrgan(id);
+            if (hotspotId) setPendingStructure(hotspotId);
+          }}
         />
       )}
       {arOpen && <ArSheet key={organ.id} organ={organ} t={t} localeCode={locale.code} onClose={() => setArOpen(false)} />}
