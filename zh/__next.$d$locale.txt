@@ -1,0 +1,5 @@
+1:"$Sreact.fragment"
+2:I[39756,["/anatomy-atelier/_next/static/chunks/0dbhjjzl8qfwv.js"],"default"]
+3:I[37457,["/anatomy-atelier/_next/static/chunks/0dbhjjzl8qfwv.js"],"default"]
+:HL["/anatomy-atelier/_next/static/chunks/0pk3on._a9o0d.css","style"]
+0:{"rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/anatomy-atelier/_next/static/chunks/0pk3on._a9o0d.css","precedence":"next"}]],["$","html",null,{"lang":"zh","dir":"ltr","children":["$","body",null,{"className":"font-stack-sc","children":["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"dty7YO0kT_JgTkFzkh1Ls"}
