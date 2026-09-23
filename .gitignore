@@ -41,6 +41,3 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
-
-# local hosting/tooling config — machine-specific, not part of the project
-/.openai/
