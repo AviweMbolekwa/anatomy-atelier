@@ -36,6 +36,8 @@ type Props = {
   /** Structure to select once the model is ready — set by a search hit. */
   pendingStructure?: string | null;
   onStructureShown?: () => void;
+  /** The child's measured pulse; the 3D heart beats at this rate. */
+  heartbeatBpm?: number | null;
 };
 
 type PickRef = { current: (hotspot: Hotspot) => void };
@@ -254,7 +256,7 @@ function useAuthoringFlag() {
 
 export function OrganViewer({
   organ, t, autoRotate, onAutoRotate, compare, onCompare, quizActive, onQuizExit,
-  pendingStructure, onStructureShown,
+  pendingStructure, onStructureShown, heartbeatBpm,
 }: Props) {
   const mountRef = useRef<HTMLDivElement>(null);
   const viewerRef = useRef<AnatomyViewer | null>(null);
@@ -414,6 +416,8 @@ export function OrganViewer({
   // quiz holds the model still and restores the user's setting on exit.
   useEffect(() => viewerRef.current?.setAutoRotate(autoRotate && !quizActive), [autoRotate, quizActive]);
   useEffect(() => viewerRef.current?.setQuizMode(quizActive), [quizActive]);
+  // Only the heart beats; any other organ stays still even if a rate is set.
+  useEffect(() => viewerRef.current?.setHeartbeat(organ.id === "heart" ? heartbeatBpm ?? null : null), [heartbeatBpm, organ.id]);
   useEffect(() => viewerRef.current?.setAuthoring(authoring), [authoring]);
 
 

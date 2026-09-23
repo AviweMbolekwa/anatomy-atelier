@@ -1627,3 +1627,69 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
 @media (prefers-reduced-motion: reduce) {
   .sticker-toast { animation: none; }
 }
+
+/* ======================================================== Feel your heartbeat */
+
+.hb-button {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 1px solid rgba(235,124,107,.45);
+  border-radius: 10px;
+  background: rgba(253,234,226,.5);
+  color: #c4533f;
+  cursor: pointer;
+  font: 500 14px var(--font-sans), sans-serif;
+}
+.hb-button:hover { background: rgba(253,234,226,.85); }
+.hb-pill {
+  margin-top: 9px;
+  min-height: 48px;
+  padding-inline: 14px 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 999px;
+  background: rgba(253,234,226,.85);
+  color: #a8412f;
+  font: 500 14px var(--font-sans), sans-serif;
+}
+.hb-pill span:nth-child(2) { flex: 1; }
+.hb-pill button { min-height: 36px; padding: 0 14px; border: 0; border-radius: 999px; background: white; color: var(--ink); cursor: pointer; font: inherit; }
+
+/* A heart icon that beats at the measured rate (duration set inline). */
+.hb-beat { display: inline-block; color: var(--coral); animation: hb-thump 1s ease-in-out infinite; }
+@keyframes hb-thump { 0%, 40%, 100% { transform: scale(1); } 10% { transform: scale(1.3); } 25% { transform: scale(1.12); } }
+
+.hb-video { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.hb-sheet .modal-icon { display: grid; place-items: center; color: var(--coral); }
+.hb-sheet .hb-privacy { padding: 10px 12px; border-radius: 12px; background: rgba(118,157,116,.1); color: #55724f; font-size: 14px; }
+.hb-sheet .hb-fun { color: var(--muted); font-size: 13px; }
+.hb-status { min-height: 1.5em; font: 500 20px var(--font-serif), serif; color: var(--ink); text-align: center; }
+.hb-wave { display: block; width: 100%; height: 90px; margin: 8px 0; border-radius: 14px; background: rgba(253,234,226,.45); }
+.hb-progress { margin: 6px 0 14px; }
+.hb-result { display: flex; align-items: center; justify-content: center; gap: 10px; font: 500 22px/1.3 var(--font-serif), serif; color: var(--ink); text-align: center; }
+.hb-result .hb-beat { font-size: 30px; }
+.hb-secondary {
+  width: 100%;
+  min-height: 44px;
+  margin-top: 8px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  font: 500 14px var(--font-sans), sans-serif;
+}
+
+@media (max-width: 760px) {
+  .hb-sheet { width: 100%; border-radius: 24px 24px 0 0; padding: 24px 18px 28px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hb-beat { animation: none; }
+}

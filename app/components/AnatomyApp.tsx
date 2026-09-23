@@ -14,6 +14,7 @@ import {
   Compass,
   Globe,
   Heart,
+  HeartPulse,
   Lightbulb,
   LibraryBig,
   Microscope,
@@ -32,6 +33,7 @@ import { OrganViewer } from "./OrganViewer";
 import { ArSheet } from "./ArSheet";
 import { DailySheet, useDailyState } from "./DailySheet";
 import { StickerBook, StickerToast } from "./StickerBook";
+import { HeartbeatSheet } from "./HeartbeatSheet";
 import { currentStreak, isAnsweredToday } from "../lib/daily";
 import { organIds, organIdsBySystem, systemIds, type OrganId, type SystemId } from "../lib/anatomy-data";
 import {
@@ -168,6 +170,9 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
   const [arOpen, setArOpen] = useState(false);
   const [dailyOpen, setDailyOpen] = useState(false);
   const [stickersOpen, setStickersOpen] = useState(false);
+  const [heartbeatOpen, setHeartbeatOpen] = useState(false);
+  /** The child's measured pulse, while the 3D heart beats along with it. */
+  const [heartbeatBpm, setHeartbeatBpm] = useState<number | null>(null);
   const daily = useDailyState();
   const dailyStreak = currentStreak(daily);
   const dailyWaiting = !isAnsweredToday(daily);
@@ -236,6 +241,8 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
     setArOpen(false);
     setDailyOpen(false);
     setStickersOpen(false);
+    setHeartbeatOpen(false);
+    setHeartbeatBpm(null);
     setPendingStructure(null);
   };
 
@@ -426,6 +433,7 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
           onQuizExit={() => setQuizActive(false)}
           pendingStructure={pendingStructure}
           onStructureShown={() => setPendingStructure(null)}
+          heartbeatBpm={heartbeatBpm}
         />
 
         <aside className="info-panel" ref={contentRef}>
@@ -452,6 +460,19 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
           <button className="ar-button" data-reveal onClick={() => setArOpen(true)}>
             <Box size={17} aria-hidden /> {t.app.ar.button}
           </button>
+          {organ.id === "heart" && (
+            heartbeatBpm ? (
+              <div className="hb-pill" data-reveal role="status">
+                <span className="hb-beat" style={{ animationDuration: `${60 / heartbeatBpm}s` }} aria-hidden>♥</span>
+                <span>{format(t.app.heartbeat.beating, { bpm: String(heartbeatBpm) })}</span>
+                <button type="button" onClick={() => setHeartbeatBpm(null)}>{t.app.heartbeat.stop}</button>
+              </div>
+            ) : (
+              <button className="hb-button" data-reveal onClick={() => setHeartbeatOpen(true)}>
+                <HeartPulse size={17} aria-hidden /> {t.app.heartbeat.button}
+              </button>
+            )
+          )}
           <div className="action-grid" data-reveal>
             <button onClick={() => setModal("animation")}><Play size={15} /> {t.info.animate}</button>
             <button onClick={() => { setQuizActive(true); setModal(null); }}><CircleHelp size={15} /> {t.info.quiz}</button>
@@ -588,6 +609,16 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
         />
       )}
       <StickerToast organById={organById} t={t} />
+      {heartbeatOpen && (
+        <HeartbeatSheet
+          t={t}
+          onClose={() => setHeartbeatOpen(false)}
+          onWatch={(bpm) => {
+            setHeartbeatBpm(bpm);
+            setHeartbeatOpen(false);
+          }}
+        />
+      )}
       {arOpen && <ArSheet key={organ.id} organ={organ} t={t} localeCode={locale.code} onClose={() => setArOpen(false)} />}
       {modal && <LearningModal type={modal} organ={organ} t={t} onClose={() => setModal(null)} />}
       {mobileLibrary && <button className="drawer-backdrop" aria-label={t.library.close} onClick={() => setMobileLibrary(false)} />}

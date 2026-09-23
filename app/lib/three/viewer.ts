@@ -4,6 +4,7 @@ import gsap from "gsap";
 import type { Hotspot } from "../../i18n/merge";
 import { AnatomyAssetManager, type LoadedOrgan } from "./loaders";
 import { HotspotLayer } from "./hotspots";
+import { heartbeatScale } from "../heartbeat";
 
 /** Tool state after a reset, so the React layer can clear its own toggles. */
 export type ResetState = {
@@ -66,6 +67,8 @@ export class AnatomyViewer {
 
   // Render-on-demand bookkeeping: the loop only draws when something moved.
   private dirty = true;
+  /** Set while the heart beats along with the child's measured pulse. */
+  private heartbeat: { bpm: number; start: number } | null = null;
   private busyUntil = 0;
   private loadRequest = 0;
 
@@ -419,6 +422,10 @@ export class AnatomyViewer {
       this.dirty = true;
     }
     if (this.hoverProbe) this.resolveHover();
+    if (this.heartbeat && this.organ) {
+      this.organ.pivot.scale.setScalar(heartbeatScale(now - this.heartbeat.start, this.heartbeat.bpm));
+      this.dirty = true;
+    }
     if (!this.dirty && now >= this.busyUntil) return;
 
     if (!this.hotspots.update(this.camera, delta, this.selectedId, this.hoveredId)) this.dirty = true;
@@ -529,6 +536,14 @@ export class AnatomyViewer {
   hotspotScreenY(id: string): number | null {
     const point = this.hotspots.screenPosition(id, this.camera, this.width, this.height);
     return point ? point.y / this.height : null;
+  }
+
+  /** Beats the current organ at `bpm` (the render-on-demand loop keeps
+   *  drawing while it does); null stops it and returns it to rest. */
+  setHeartbeat(bpm: number | null) {
+    this.heartbeat = bpm ? { bpm, start: performance.now() } : null;
+    if (!bpm) this.organ?.pivot.scale.setScalar(1);
+    this.dirty = true;
   }
 
   setQuizMode(enabled: boolean) {
