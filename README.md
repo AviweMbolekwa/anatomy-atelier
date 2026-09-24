@@ -165,12 +165,13 @@ are deliberately absent: every such field costs a translation per locale.
 - All locales set `lang` and `dir`; layout uses logical properties throughout,
   and a test fails the build on a single-sided `left`/`right` that would break RTL.
 - Loading, error and empty states are announced (`role="status"` / `role="alert"`).
-- Animation is suppressed under `prefers-reduced-motion`.
+- Under `prefers-reduced-motion`, movement becomes short fades, decorative loops
+  stop, the 3D organ and camera jump instead of flying, and auto-rotate starts off.
 
 ## Content & sources
 
-Medical content is written against, and cites, these references per organ
-(surfaced in the final step of each lesson):
+Content is written against these references (kept per organ in
+`anatomy-data.ts`; not shown in the kids' UI):
 
 - [OpenStax, *Anatomy & Physiology 2e*](https://openstax.org/details/books/anatomy-and-physiology-2e)
 - [Terminologia Anatomica (FIPAT, 2nd ed.)](https://ta2viewer.openanatomy.org/)
