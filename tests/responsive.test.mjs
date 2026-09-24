@@ -104,19 +104,20 @@ test("the primary nav stays reachable on phones as a bottom bar", () => {
   assert.match(block, /\.main-nav \{[^}]*position: fixed/);
 });
 
-test("condition lists are only rendered inside the grown-ups panel", () => {
-  const uses = [...app.matchAll(/\.conditions\.map/g)].map((match) => match.index);
-  assert.ok(uses.length > 0, "the grown-ups panel should still list conditions");
-  const panel = app.indexOf('panel === "grownups" && (');
-  const panelEnd = app.indexOf('panel === "notes" && (', panel);
-  for (const index of uses) {
-    assert.ok(index > panel && index < panelEnd, "conditions are rendered outside the grown-ups panel");
+test("the kids' app shows no health-condition lists and has no adult section", () => {
+  assert.doesNotMatch(app, /\.conditions\b/, "condition lists must not be rendered");
+  assert.doesNotMatch(app, /grownups/, "the adult section was removed");
+});
+
+test("organ content carries no condition lists to translate", async () => {
+  for (const code of ["en", "xh", "zu", "af"]) {
+    const source = await readFile(new URL(`../app/i18n/organs/${code}.ts`, import.meta.url), "utf8");
+    assert.doesNotMatch(source, /conditions:/, `${code} still has conditions`);
   }
 });
 
 test("there is no placeholder learner profile", () => {
   assert.doesNotMatch(app, /<span>MA<\/span>/, "the hard-coded profile initials should be gone");
-  assert.match(app, /grownups-button/);
 });
 
 test("the review button opens an organ that actually has something due", () => {
@@ -125,7 +126,7 @@ test("the review button opens an organ that actually has something due", () => {
 
 test("tap targets meet 44px in kid mode", () => {
   const kid = css.slice(css.indexOf("Kid mode"));
-  for (const selector of [".action-grid button", ".quiz-options button", ".grownups-button", ".grownups-notes"]) {
+  for (const selector of [".action-grid button", ".quiz-options button", ".ar-button", ".hb-button"]) {
     const rule = new RegExp(selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s*\\{[^}]*(min-height|height): (4[4-9]|[5-9]\\d)px");
     assert.match(kid, rule, `${selector} is under 44px`);
   }
@@ -134,4 +135,39 @@ test("tap targets meet 44px in kid mode", () => {
 test("the library shows the sticker book, not a mastery percentage", () => {
   assert.match(app, /sticker-button/);
   assert.doesNotMatch(app, /quiz\.mastery/, "kids shouldn't see 'Mastery N%'");
+});
+
+// ------------------------------------------------------------ UI polish
+
+const viewerCore = await readFile(new URL("../app/lib/three/viewer.ts", import.meta.url), "utf8");
+
+test("JavaScript-driven motion honours reduced motion, which CSS can't reach", () => {
+  assert.match(viewerCore, /prefersReducedMotion\(\)/, "the 3D viewer must check reduced motion");
+  assert.match(app, /prefersReducedMotion/, "auto-rotate must default off under reduced motion");
+});
+
+test("switching organs is quick: no staggered reveal, no ease-in exit", () => {
+  const reveal = app.slice(app.indexOf("gsap.fromTo("), app.indexOf("}, [organId]);"));
+  assert.doesNotMatch(reveal, /stagger/);
+  assert.doesNotMatch(viewerCore, /ease: "power2\.in"/);
+});
+
+test("buttons give press feedback at exactly 0.96", () => {
+  assert.match(css, /button:not\(:disabled[^)]*\):active \{ scale: 0\.96; \}/);
+});
+
+test("hover styles only apply where a pointer can really hover", () => {
+  const withoutGated = css.replace(/@media \(hover: hover\) and \(pointer: fine\) \{[^{}]*\{[^{}]*\} \}/g, "");
+  assert.doesNotMatch(withoutGated, /:hover/, "an ungated :hover sticks on after a tap on tablets");
+});
+
+test("progress bars animate with transform, never width", () => {
+  assert.doesNotMatch(css, /transition: width/);
+  assert.match(css, /transform: scaleX\(var\(--progress/);
+});
+
+test("decorative pulses don't loop forever", () => {
+  for (const name of ["daily-pulse", "organ-pulse"]) {
+    assert.doesNotMatch(css, new RegExp(`animation: ${name}[^;]*infinite`), `${name} loops forever`);
+  }
 });

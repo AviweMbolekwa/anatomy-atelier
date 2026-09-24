@@ -181,7 +181,7 @@ export function HeartbeatSheet({
             </p>
             <canvas ref={waveRef} className="hb-wave" width={600} height={120} aria-hidden />
             <div className="mastery-track hb-progress" aria-hidden>
-              <div className="mastery-fill" style={{ width: `${Math.round(progress * 100)}%` }} />
+              <div className="mastery-fill" style={{ "--progress": progress } as React.CSSProperties} />
             </div>
             <button type="button" className="hb-secondary" onClick={stopMeasuring}>{copy.stop}</button>
           </>

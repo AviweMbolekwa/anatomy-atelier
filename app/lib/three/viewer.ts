@@ -5,6 +5,7 @@ import type { Hotspot } from "../../i18n/merge";
 import { AnatomyAssetManager, type LoadedOrgan } from "./loaders";
 import { HotspotLayer } from "./hotspots";
 import { heartbeatScale } from "../heartbeat";
+import { prefersReducedMotion } from "../motion";
 
 /** Tool state after a reset, so the React layer can clear its own toggles. */
 export type ResetState = {
@@ -272,13 +273,17 @@ export class AnatomyViewer {
       this.fadeTween = null;
       this.setDepthPrepass(outgoing, false);
       this.hotspots.clear();
-      this.busy(0.8);
-      await gsap.to(outgoing.pivot.scale, {
-        x: 0.72, y: 0.72, z: 0.72,
-        duration: 0.34,
-        ease: "power2.in",
-        onUpdate: () => (this.dirty = true),
-      });
+      // A short ease-out: ease-in would hold the old organ still at the very
+      // moment the child is watching for the switch, which reads as lag.
+      if (!prefersReducedMotion()) {
+        this.busy(0.3);
+        await gsap.to(outgoing.pivot.scale, {
+          x: 0.72, y: 0.72, z: 0.72,
+          duration: 0.2,
+          ease: "power2.out",
+          onUpdate: () => (this.dirty = true),
+        });
+      }
       this.assets.release(outgoing);
       this.organ = null;
       this.dirty = true;
@@ -321,10 +326,16 @@ export class AnatomyViewer {
     const glow = this.scene.getObjectByName("organ-glow") as THREE.PointLight | undefined;
     glow?.color.set(accent);
 
+    this.fade(organ, 1, prefersReducedMotion() ? 0.3 : 0.72);
+    if (prefersReducedMotion()) {
+      this.camera.position.z = 8.2;
+      this.callbacks.onLoading(false, 1);
+      this.dirty = true;
+      return;
+    }
     organ.pivot.scale.setScalar(0.58);
     organ.pivot.position.z = -1.3;
     this.busy(1.4);
-    this.fade(organ, 1, 0.72);
     // The organ is on screen from here on, so the load is over as far as the UI
     // is concerned — the intro animation should play in the open, not behind a
     // loading panel.
@@ -442,8 +453,12 @@ export class AnatomyViewer {
   }
 
   private tween(target: object, vars: gsap.TweenVars) {
-    this.busy((vars.duration as number) ?? 0.5);
-    return gsap.to(target, { ...vars, onUpdate: () => (this.dirty = true) });
+    // Under reduced motion, anything that moves or scales jumps to its end;
+    // opacity-only tweens (isolate, fades) keep their timing.
+    const moves = !("opacity" in vars);
+    const duration = moves && prefersReducedMotion() ? 0 : ((vars.duration as number) ?? 0.5);
+    this.busy(duration);
+    return gsap.to(target, { ...vars, duration, onUpdate: () => (this.dirty = true) });
   }
 
   private applyAutoRotate(now: number) {
@@ -754,7 +769,7 @@ export class AnatomyViewer {
       { constant: -1.8 },
       {
         constant: this.crossSection ? 0 : -1.8,
-        duration: 0.85,
+        duration: prefersReducedMotion() ? 0 : 0.85,
         ease: "power2.inOut",
         onUpdate: () => (this.dirty = true),
       },

@@ -99,14 +99,13 @@ entry in the library prefetches its GLB.
 - **Explore** — orbit, zoom, isolate, cross-section, wireframe layers, and a
   Reset that genuinely returns every one of those to its opening state.
 - **Systems** — browse all nine organs grouped by the eight body systems.
-- **Lessons** — a four-step guided flow per organ: overview → structures →
-  clinical relevance → sources.
+- **Lessons** — a three-step guided flow per organ: overview → structures →
+  amazing facts.
 - **Labelling quiz** — the 3D quiz asks for each structure once, marks the real
   answer on a miss, and records progress per structure.
 - **Mastery & review** — every structure carries its own mastery score and
   review date; structures due for review lead the next round.
-- **Library & notes** — bookmark organs and keep per-organ study notes; both
-  persist in `localStorage` on the device.
+- **Library** — bookmark organs; saved in `localStorage` on the device.
 - **Related organs** — cross-navigate along real anatomical relationships.
 - **See it in your room (AR)** — places the organ on a real table at life size
   (`arSizes` in `anatomy-data.ts`; the eye and skin are labelled as enlarged).

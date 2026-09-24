@@ -16,7 +16,6 @@ export const organs: OrganContentDictionary = {
     funFact: "Dit klop omtrent 2,5 miljard keer in ’n gemiddelde leeftyd, en begin al voor jy gebore word.",
     tissue: "Hartspier van naby",
     comparison: "Hart teen brein",
-    conditions: ["Koronêre hartsiekte", "Aritmie", "Hartklepsiektes", "Hartversaking", "Kardiomiopatie", "Miokarditis", "Atriale fibrillasie", "Aangebore hartgebreke"],
     hotspots: {
       aorta: { label: "Aorta", detail: "Die grootste pyp uit die hart" },
       "left-atrium": { label: "Linkerboesem", detail: "Ontvang vars bloed van die longe" },
@@ -41,7 +40,6 @@ export const organs: OrganContentDictionary = {
     funFact: "Dit het self geen pynreseptore nie — ’n hoofpyn word in die weefsel rondom dit gevoel.",
     tissue: "Breinselle van naby",
     comparison: "Brein teen oog",
-    conditions: ["Migraine", "Beroerte", "Neurodegeneratiewe siekte", "Epilepsie", "Traumatiese breinbesering", "Meningitis", "Veelvuldige sklerose", "Breinaneurisme"],
     hotspots: {
       frontal: { label: "Voorlob", detail: "Help jou beplan, besluit en beweeg" },
       parietal: { label: "Wandlob", detail: "Verstaan aanraking en ruimte" },
@@ -64,7 +62,6 @@ export const organs: OrganContentDictionary = {
     funFact: "Die regterkant het drie lobbe en die linkerkant net twee, wat plek maak vir die hart.",
     tissue: "Klein lugsakkies",
     comparison: "Longe teen hart",
-    conditions: ["Asma", "KOLS", "Longontsteking", "Pulmonale embolisme", "Pulmonale fibrose", "Brongitis", "Sistiese fibrose", "Longkanker"],
     hotspots: {
       trachea: { label: "Lugpyp", detail: "Die buis waardeur lug inkom" },
       "right-lung": { label: "Regterlong", detail: "Die groter long, met drie dele" },
@@ -88,7 +85,6 @@ export const organs: OrganContentDictionary = {
     funFact: "Dit is die enigste menslike orgaan wat van ’n klein stukkie terug kan groei tot volle grootte.",
     tissue: "Lewerselle van naby",
     comparison: "Lewer teen ingewande",
-    conditions: ["Vetterige lewersiekte", "Hepatitis", "Sirrose", "Galstene", "Hemochromatose", "Lewerkanker", "Outo-immuun hepatitis", "Portale hipertensie"],
     hotspots: {
       "right-lobe": { label: "Regterlob", detail: "Die grootste deel van die lewer" },
       "left-lobe": { label: "Linkerlob", detail: "’n Kleiner deel wat oor die middel strek" },
@@ -110,7 +106,6 @@ export const organs: OrganContentDictionary = {
     funFact: "Hulle kry byna alles wat hulle filtreer terug — net omtrent 1–2 L verlaat die liggaam as urine.",
     tissue: "Klein bloedfilters",
     comparison: "Niere teen lewer",
-    conditions: ["Niersteen", "Chroniese niersiekte", "Urienweginfeksie", "Glomerulonefritis", "Polisistiese niersiekte", "Renale hipertensie", "Akute nierbesering", "Nefrotiese sindroom"],
     hotspots: {
       cortex: { label: "Nierskors", detail: "Buitenste laag, waar filtrering begin" },
       medulla: { label: "Niermerg", detail: "Binneste deel wat water spaar" },
@@ -132,7 +127,6 @@ export const organs: OrganContentDictionary = {
     funFact: "Die kornea het glad nie bloedvate nie; dit kry suurstof reguit uit die lug.",
     tissue: "Selle wat lig vang",
     comparison: "Oog teen brein",
-    conditions: ["Bysiendheid", "Katarak", "Gloukoom", "Makulêre degenerasie", "Retinale loslating", "Droë oë", "Astigmatisme", "Konjunktivitis"],
     hotspots: {
       cornea: { label: "Kornea", detail: "Helder venster aan die voorkant" },
       iris: { label: "Iris", detail: "Die ring wat jou oog sy kleur gee" },
@@ -154,7 +148,6 @@ export const organs: OrganContentDictionary = {
     funFact: "Die voering vernuwe homself elke paar dae — die vinnigste van enige weefsel in die liggaam.",
     tissue: "Klein vingeragtige knoppies",
     comparison: "Ingewande teen lewer",
-    conditions: ["Prikkelbare dermsindroom", "Inflammatoriese dermsiekte", "Seliakie", "Divertikulitis", "Dermobstruksie", "Kolorektale poliepe", "Crohn se siekte", "Laktose-intoleransie"],
     hotspots: {
       duodenum: { label: "Duodenum", detail: "Eerste deel, net ná die maag" },
       jejunum: { label: "Jejunum", detail: "Waar die meeste kos opgeneem word" },
@@ -176,7 +169,6 @@ export const organs: OrganContentDictionary = {
     funFact: "Skaars 2% daarvan maak hormone; die res maak verteringsensieme.",
     tissue: "Selle wat sappe maak",
     comparison: "Pankreas teen lewer",
-    conditions: ["Pankreatitis", "Tipe 1-diabetes", "Pankreaskanker", "Tipe 2-diabetes", "Eksokriene ontoereikendheid", "Pankreassiste", "Galsteenpankreatitis", "Insulinoom"],
     hotspots: {
       head: { label: "Kop", detail: "Wye punt, deur die ingewande omhels" },
       body: { label: "Liggaam", detail: "Middeldeel, oor die ruggraat" },
@@ -199,7 +191,6 @@ export const organs: OrganContentDictionary = {
     funFact: "’n Enkele vierkante sentimeter kan honderde sweetkliere en meters bloedvate bevat.",
     tissue: "Vellae van naby",
     comparison: "Vel teen ingewande",
-    conditions: ["Ekseem", "Psoriase", "Melanoom", "Aknee", "Sellulitis", "Kontakdermatitis", "Rosasea", "Vitiligo"],
     hotspots: {
       epidermis: { label: "Opperhuid", detail: "Taai boonste laag wat jy kan sien" },
       dermis: { label: "Leerhuid", detail: "Bevat senuwees, bloedvate en sweetkliere" },

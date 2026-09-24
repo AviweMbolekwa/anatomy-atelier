@@ -89,7 +89,7 @@ export function StickerBook({
           <strong>{format(copy.count, { count: String(found), total: String(total) })}</strong>
           {gold > 0 && <span className="sticker-gold-count"><Star size={13} fill="currentColor" aria-hidden /> {format(copy.gold, { count: String(gold) })}</span>}
           <div className="mastery-track" aria-hidden>
-            <div className="mastery-fill" style={{ width: `${total ? Math.round((found / total) * 100) : 0}%` }} />
+            <div className="mastery-fill" style={{ "--progress": total ? found / total : 0 } as React.CSSProperties} />
           </div>
           <p>{copy.howTo}</p>
           <p className="sticker-hint">{copy.tapHint}</p>

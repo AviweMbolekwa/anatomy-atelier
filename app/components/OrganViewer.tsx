@@ -264,6 +264,21 @@ export function OrganViewer({
   const autoRotateRef = useRef(autoRotate);
   const canvasLabelRef = useRef(t.viewer.canvas);
   const [selected, setSelected] = useState<Hotspot | null>(null);
+  // Whether the last input was a key press. Keyboard-driven selection is
+  // repeated rapidly (↑/↓ through parts), so its label appears with no
+  // animation; a tap still gets a short fade.
+  const keyboardInput = useRef(false);
+  const [calloutInstant, setCalloutInstant] = useState(false);
+  useEffect(() => {
+    const onKey = () => { keyboardInput.current = true; };
+    const onPointer = () => { keyboardInput.current = false; };
+    window.addEventListener("keydown", onKey, true);
+    window.addEventListener("pointerdown", onPointer, true);
+    return () => {
+      window.removeEventListener("keydown", onKey, true);
+      window.removeEventListener("pointerdown", onPointer, true);
+    };
+  }, []);
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [slowLoad, setSlowLoad] = useState(false);
@@ -345,7 +360,10 @@ export function OrganViewer({
     void import("../lib/three/viewer").then(({ AnatomyViewer: Viewer }) => {
       if (cancelled || !mountRef.current) return;
       viewer = new Viewer(mountRef.current, {
-        onSelect: setSelected,
+        onSelect: (hotspot) => {
+          setCalloutInstant(keyboardInput.current);
+          setSelected(hotspot);
+        },
         onLoading: (isLoading, value) => {
           setLoading(isLoading);
           setProgress(value);
@@ -489,7 +507,7 @@ export function OrganViewer({
       )}
 
       {selected && !quizActive && (
-        <div className="hotspot-callout" ref={calloutRef} data-side="right">
+        <div className="hotspot-callout" ref={calloutRef} data-side="right" data-instant={calloutInstant || undefined}>
           <div className="callout-body" style={{ "--hotspot-color": selected.color } as React.CSSProperties}>
             <button className="callout-close" type="button" onClick={() => viewerRef.current?.clearSelection()} aria-label={t.modal.close}>
               <X size={13} />

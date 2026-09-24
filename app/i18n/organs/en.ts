@@ -16,7 +16,6 @@ export const organs: OrganContentDictionary = {
     funFact: "It beats roughly 2.5 billion times in an average lifetime, and starts before you are born.",
     tissue: "Heart muscle up close",
     comparison: "Heart vs. brain",
-    conditions: ["Coronary artery disease", "Arrhythmia", "Heart valve disorders", "Heart failure", "Cardiomyopathy", "Myocarditis", "Atrial fibrillation", "Congenital heart defects"],
     hotspots: {
       "aorta": { label: "Aorta", detail: "The biggest pipe out of the heart" },
       "left-atrium": { label: "Left Atrium", detail: "Collects fresh blood from the lungs" },
@@ -41,7 +40,6 @@ export const organs: OrganContentDictionary = {
     funFact: "It has no pain receptors of its own — a headache is felt in the tissues around it.",
     tissue: "Brain cells up close",
     comparison: "Brain vs. eye",
-    conditions: ["Migraine", "Stroke", "Neurodegenerative disease", "Epilepsy", "Traumatic brain injury", "Meningitis", "Multiple sclerosis", "Brain aneurysm"],
     hotspots: {
       "frontal": { label: "Frontal Lobe", detail: "Helps you plan, decide and move" },
       "parietal": { label: "Parietal Lobe", detail: "Makes sense of touch and space" },
@@ -64,7 +62,6 @@ export const organs: OrganContentDictionary = {
     funFact: "The right lung carries three lobes and the left only two, leaving a notch for the heart.",
     tissue: "Tiny air sacs",
     comparison: "Lungs vs. heart",
-    conditions: ["Asthma", "COPD", "Pneumonia", "Pulmonary embolism", "Pulmonary fibrosis", "Bronchitis", "Cystic fibrosis", "Lung cancer"],
     hotspots: {
       "trachea": { label: "Trachea", detail: "The tube that brings air in" },
       "right-lung": { label: "Right Lung", detail: "The bigger lung, with three parts" },
@@ -88,7 +85,6 @@ export const organs: OrganContentDictionary = {
     funFact: "It is the only human organ that can regrow to full size from a fraction of itself.",
     tissue: "Liver cells up close",
     comparison: "Liver vs. intestine",
-    conditions: ["Fatty liver disease", "Hepatitis", "Cirrhosis", "Gallstones", "Haemochromatosis", "Liver cancer", "Autoimmune hepatitis", "Portal hypertension"],
     hotspots: {
       "right-lobe": { label: "Right Lobe", detail: "The biggest part of the liver" },
       "left-lobe": { label: "Left Lobe", detail: "A smaller part that reaches across the middle" },
@@ -110,7 +106,6 @@ export const organs: OrganContentDictionary = {
     funFact: "They reclaim almost everything they filter — only about 1–2 L leaves the body as urine.",
     tissue: "Tiny blood filters",
     comparison: "Kidneys vs. liver",
-    conditions: ["Kidney stones", "Chronic kidney disease", "Urinary infection", "Glomerulonephritis", "Polycystic kidney disease", "Renal hypertension", "Acute kidney injury", "Nephrotic syndrome"],
     hotspots: {
       "cortex": { label: "Renal Cortex", detail: "Outer layer, where filtering starts" },
       "medulla": { label: "Renal Medulla", detail: "Inner part that saves water" },
@@ -132,7 +127,6 @@ export const organs: OrganContentDictionary = {
     funFact: "The cornea carries no blood vessels at all; it takes oxygen directly from the air.",
     tissue: "Light-catching cells",
     comparison: "Eye vs. brain",
-    conditions: ["Myopia", "Cataract", "Glaucoma", "Macular degeneration", "Retinal detachment", "Dry eye disease", "Astigmatism", "Conjunctivitis"],
     hotspots: {
       "cornea": { label: "Cornea", detail: "Clear window at the front" },
       "iris": { label: "Iris", detail: "The ring that gives your eye its color" },
@@ -154,7 +148,6 @@ export const organs: OrganContentDictionary = {
     funFact: "Its lining renews itself every few days — the fastest turnover of any tissue in the body.",
     tissue: "Tiny finger-like bumps",
     comparison: "Intestine vs. liver",
-    conditions: ["Irritable bowel syndrome", "Inflammatory bowel disease", "Celiac disease", "Diverticulitis", "Intestinal obstruction", "Colorectal polyps", "Crohn's disease", "Lactose intolerance"],
     hotspots: {
       "duodenum": { label: "Duodenum", detail: "First part, just after the stomach" },
       "jejunum": { label: "Jejunum", detail: "Where most food gets soaked up" },
@@ -176,7 +169,6 @@ export const organs: OrganContentDictionary = {
     funFact: "Barely 2% of it makes hormones; the rest is given over to digestive enzymes.",
     tissue: "Juice-making cells",
     comparison: "Pancreas vs. liver",
-    conditions: ["Pancreatitis", "Type 1 diabetes", "Pancreatic cancer", "Type 2 diabetes", "Exocrine insufficiency", "Pancreatic cysts", "Gallstone pancreatitis", "Insulinoma"],
     hotspots: {
       "head": { label: "Head", detail: "Wide end, hugged by the intestine" },
       "body": { label: "Body", detail: "Middle part, across the spine" },
@@ -199,7 +191,6 @@ export const organs: OrganContentDictionary = {
     funFact: "A single square centimetre can hold hundreds of sweat glands and metres of blood vessels.",
     tissue: "Skin layers up close",
     comparison: "Skin vs. intestine",
-    conditions: ["Eczema", "Psoriasis", "Melanoma", "Acne vulgaris", "Cellulitis", "Contact dermatitis", "Rosacea", "Vitiligo"],
     hotspots: {
       "epidermis": { label: "Epidermis", detail: "Tough top layer you can see" },
       "dermis": { label: "Dermis", detail: "Holds nerves, blood vessels and sweat glands" },

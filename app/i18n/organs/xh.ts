@@ -16,7 +16,6 @@ export const organs: OrganContentDictionary = {
     funFact: "Ibetha malunga ne-2,5 yezigidigidi ebomini bomntu, kwaye iqala ngaphambi kokuba uzalwe.",
     tissue: "Isihlunu sentliziyo kufuphi",
     comparison: "Intliziyo nengqondo",
-    conditions: ["Isifo semithambo-gazi yentliziyo", "Ukubetha okungaqhelekanga kwentliziyo", "Iingxaki zeevalvu zentliziyo", "Ukusilela kwentliziyo", "Isifo sesihlunu sentliziyo", "Ukudumba kwesihlunu sentliziyo", "I-atrial fibrillation", "Iziphene zentliziyo zokuzalwa"],
     hotspots: {
       aorta: { label: "I-aorta", detail: "Owona mbhobho mkhulu uphuma entliziyweni" },
       "left-atrium": { label: "Igumbi eliphezulu lasekhohlo", detail: "Lamkela igazi elitsha elivela emiphungeni" },
@@ -41,7 +40,6 @@ export const organs: OrganContentDictionary = {
     funFact: "Ayinazo izivamvo zentlungu ngokwayo — intloko ebuhlungu iviwa kwizicubu ezijikelezileyo.",
     tissue: "Iiseli zengqondo kufuphi",
     comparison: "Ingqondo neliso",
-    conditions: ["Imigraine", "Istroke", "Izifo ezitshabalalisa imithambo-luvo", "Isifo sokuxhuzula", "Ukonzakala kwengqondo", "Imeningitis", "I-multiple sclerosis", "I-aneurysm yengqondo"],
     hotspots: {
       frontal: { label: "Icandelo langaphambili", detail: "Likunceda ucwangcise, ugqibe kwaye uhambe" },
       parietal: { label: "Icandelo eliphezulu", detail: "Liqonda ukuchukumisa nendawo" },
@@ -64,7 +62,6 @@ export const organs: OrganContentDictionary = {
     funFact: "Kwicala lasekunene kukho amacandelo amathathu, ekhohlo mabini kuphela, kushiywe indawo yentliziyo.",
     tissue: "Iingxowa ezincinci zomoya",
     comparison: "Imiphunga nentliziyo",
-    conditions: ["Iasthma", "I-COPD", "Inyumoniya", "Ihlwili emiphungeni", "Ukuqina kwemiphunga", "Ibronkhayitisi", "I-cystic fibrosis", "Umhlaza wemiphunga"],
     hotspots: {
       trachea: { label: "Ummizo womoya", detail: "Umbhobho ongena ngawo umoya" },
       "right-lung": { label: "Umphunga wasekunene", detail: "Omkhulu, unamacandelo amathathu" },
@@ -88,7 +85,6 @@ export const organs: OrganContentDictionary = {
     funFact: "Kukuphela kwelungu lomntu elinokukhula kwakhona libe likhulu ngokupheleleyo ukusuka kwisiqwenga esincinci.",
     tissue: "Iiseli zesibindi kufuphi",
     comparison: "Isibindi namathumbu",
-    conditions: ["Isibindi esinamanqatha", "Ihepatayitisi", "Isirhosisi", "Amatye enyongo", "I-hemochromatosis", "Umhlaza wesibindi", "Ihepatayitisi ye-autoimmune", "Uxinzelelo lwegazi lwepotali"],
     hotspots: {
       "right-lobe": { label: "Icandelo lasekunene", detail: "Eyona nxalenye inkulu yesibindi" },
       "left-lobe": { label: "Icandelo lasekhohlo", detail: "Inxalenye encinci enqumla phakathi" },
@@ -110,7 +106,6 @@ export const organs: OrganContentDictionary = {
     funFact: "Zibuyisa phantse yonke into eziyihluzayo — malunga ne-1–2 L kuphela ephuma emzimbeni njengomchamo.",
     tissue: "Izihluzi ezincinci zegazi",
     comparison: "Izintso nesibindi",
-    conditions: ["Amatye ezintso", "Isifo sezintso esinganyangekiyo", "Usulelo lomchamo", "I-glomerulonephritis", "Isifo sezintso ezineengxowa", "Uxinzelelo lwegazi lwezintso", "Ukonzakala kwezintso ngequbuliso", "I-nephrotic syndrome"],
     hotspots: {
       cortex: { label: "Umaleko wangaphandle", detail: "Apho ukuhluza kuqala khona" },
       medulla: { label: "Inxalenye yangaphakathi", detail: "Igcina amanzi" },
@@ -132,7 +127,6 @@ export const organs: OrganContentDictionary = {
     funFact: "I-cornea ayinayo nemithambo-gazi; ifumana ioksijini ngqo emoyeni.",
     tissue: "Iiseli ezibamba ukukhanya",
     comparison: "Iliso nengqondo",
-    conditions: ["Ukungaboni kude", "Icataract", "Iglawukhoma", "Ukuwohloka kwe-macula", "Ukwahlukana kweretina", "Amehlo omileyo", "I-astigmatism", "Amehlo abomvu (conjunctivitis)"],
     hotspots: {
       cornea: { label: "I-cornea", detail: "Ifestile ecacileyo ngaphambili" },
       iris: { label: "I-iris", detail: "Iringi enika iliso lakho umbala" },
@@ -154,7 +148,6 @@ export const organs: OrganContentDictionary = {
     funFact: "Umaleko wangaphakathi uzihlaziya rhoqo emva kweentsuku ezimbalwa — ngokukhawuleza kunazo zonke izicubu emzimbeni.",
     tissue: "Amaqhuma amancinci afana neminwe",
     comparison: "Amathumbu nesibindi",
-    conditions: ["I-irritable bowel syndrome", "Isifo sokudumba kwamathumbu", "Isifo se-celiac", "I-diverticulitis", "Ukuvaleka kwamathumbu", "Iipolyps zekholoni", "Isifo sika-Crohn", "Ukungakwazi ukwetyisa ilaktos"],
     hotspots: {
       duodenum: { label: "I-duodenum", detail: "Inxalenye yokuqala, emva kwesisu" },
       jejunum: { label: "I-jejunum", detail: "Apho kufunxwa khona uninzi lokutya" },
@@ -176,7 +169,6 @@ export const organs: OrganContentDictionary = {
     funFact: "Yi-2% kuphela eyenza iihomoni; enye yonke yenza ii-enzyme zokwetyisa.",
     tissue: "Iiseli ezenza iijusi",
     comparison: "Ipankriya nesibindi",
-    conditions: ["I-pancreatitis", "Iswekile yohlobo 1", "Umhlaza wepankriya", "Iswekile yohlobo 2", "Ukusilela kwe-exocrine", "Iingxowa zepankriya", "I-pancreatitis yamatye enyongo", "I-insulinoma"],
     hotspots: {
       head: { label: "Intloko", detail: "Isiphelo esibanzi, siwongwe ngamathumbu" },
       body: { label: "Umzimba", detail: "Inxalenye ephakathi, inqumla umnqonqo" },
@@ -199,7 +191,6 @@ export const organs: OrganContentDictionary = {
     funFact: "Isentimitha enye yesikwere inokuba namakhulu amadlala okubila neemitha zemithambo-gazi.",
     tissue: "Imaleko yolusu kufuphi",
     comparison: "Ulusu namathumbu",
-    conditions: ["I-eczema", "I-psoriasis", "I-melanoma", "Amaqhakuva", "I-cellulitis", "I-contact dermatitis", "I-rosacea", "I-vitiligo"],
     hotspots: {
       epidermis: { label: "Umaleko ongaphezulu", detail: "Umaleko oqinileyo obonakalayo" },
       dermis: { label: "Umaleko ophakathi", detail: "Unemithambo-luvo, imithambo-gazi namadlala okubila" },

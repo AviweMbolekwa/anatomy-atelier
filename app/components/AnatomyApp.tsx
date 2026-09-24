@@ -18,7 +18,6 @@ import {
   Lightbulb,
   LibraryBig,
   Microscope,
-  NotebookPen,
   Play,
   Search,
   Share2,
@@ -26,7 +25,6 @@ import {
   Crosshair,
   Star,
   Trash2,
-  Users,
   X,
 } from "lucide-react";
 import { OrganViewer } from "./OrganViewer";
@@ -38,8 +36,7 @@ import { SpeakButton, Speakable } from "./ReadAloud";
 import { currentStreak, isAnsweredToday } from "../lib/daily";
 import { organIds, organIdsBySystem, systemIds, type OrganId, type SystemId } from "../lib/anatomy-data";
 import {
-  EMPTY_NOTES, EMPTY_SAVED, getNotesSnapshot, getSavedSnapshot,
-  setNote as persistNote, subscribe, toggleSavedOrgan,
+  EMPTY_SAVED, getSavedSnapshot, subscribe, toggleSavedOrgan,
 } from "../lib/local-store";
 import { useModalA11y } from "../lib/use-modal-a11y";
 import { search as searchAnatomy } from "../lib/search";
@@ -52,6 +49,7 @@ import { buildOrgans, indexOrgans, type Organ } from "../i18n/merge";
 import { getAuthoredHotspots, getAuthoredSnapshot, getAuthoredSnapshotServer, subscribeAuthored } from "../lib/authored-hotspots";
 import { format, type Dictionary, type UiDictionary } from "../i18n/types";
 import { withBase } from "../lib/base-path";
+import { prefersReducedMotion, subscribeReducedMotion } from "../lib/motion";
 
 /**
  * The old "quiz" modal was three buttons that all closed the dialog without
@@ -62,7 +60,7 @@ import { withBase } from "../lib/base-path";
 type Modal = "lesson" | "animation" | "system" | null;
 
 /** Slide-over panels driven by the primary nav. */
-type Panel = "systems" | "saved" | "notes" | "grownups" | null;
+type Panel = "systems" | "saved" | null;
 
 /**
  * Renders an organ illustration, or its accent glyph for organs that ship as a
@@ -161,7 +159,11 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
   const organById = useMemo(() => indexOrgans(organs), [organs]);
 
   const [organId, setOrganId] = useState<OrganId>("heart");
-  const [autoRotate, setAutoRotate] = useState(true);
+  // Spinning on its own is exactly the motion "reduce motion" asks to avoid,
+  // so under that setting the organ starts still; spinning stays one tap away.
+  const reducedMotion = useSyncExternalStore(subscribeReducedMotion, prefersReducedMotion, () => false);
+  const [autoRotatePref, setAutoRotate] = useState<boolean | null>(null);
+  const autoRotate = autoRotatePref ?? !reducedMotion;
   const [compare, setCompare] = useState(false);
   const [modal, setModal] = useState<Modal>(null);
   const [query, setQuery] = useState("");
@@ -182,7 +184,6 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
   // Read through the store rather than copied into state by an effect: the
   // server snapshot is empty, and the client re-reads on subscribe.
   const saved = useSyncExternalStore(subscribe, getSavedSnapshot, () => EMPTY_SAVED);
-  const notes = useSyncExternalStore(subscribe, getNotesSnapshot, () => EMPTY_NOTES) as Record<string, string>;
   const contentRef = useRef<HTMLDivElement>(null);
   const prefetched = useRef(new Set<OrganId>());
   const organ = organById[organId];
@@ -221,9 +222,11 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
 
   useEffect(() => {
     if (!contentRef.current) return;
+    // Switching organs is frequent, so the new content gets one quick fade:
+    // no stagger and no movement, which also keeps it within reduced motion.
     gsap.fromTo(contentRef.current.querySelectorAll("[data-reveal]"),
-      { opacity: 0, y: 8 },
-      { opacity: 1, y: 0, duration: 0.48, stagger: 0.035, ease: "power2.out", overwrite: true },
+      { opacity: 0 },
+      { opacity: 1, duration: 0.15, ease: "power1.out", overwrite: true },
     );
   }, [organId]);
 
@@ -258,7 +261,6 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
 
   const onToggleSaved = (id: OrganId) => toggleSavedOrgan(id);
 
-  const onNoteChange = (id: OrganId, text: string) => persistNote(id, text);
 
   // Warms the model in the HTTP cache while the pointer is still travelling,
   // so the switch usually renders without a visible loading pass.
@@ -315,17 +317,6 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
           <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder={t.search.placeholder} />
         </label>
         <LanguageSwitcher locale={locale} t={t} />
-        {/* Where a learner profile would sit. There are no accounts, so this
-            slot belongs to the parent: safety note, privacy, clinical content. */}
-        <button
-          type="button"
-          className={`grownups-button ${panel === "grownups" ? "active" : ""}`}
-          onClick={() => setPanel(panel === "grownups" ? null : "grownups")}
-          aria-pressed={panel === "grownups"}
-          aria-label={t.app.kids.grownupsTitle}
-        >
-          <Users size={16} aria-hidden /> <span>{t.app.kids.grownups}</span>
-        </button>
         <button className="mobile-library-trigger" onClick={() => setMobileLibrary(true)} aria-label={t.library.open}><LibraryBig size={20} /></button>
       </header>
 
@@ -364,7 +355,7 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
               <small>{format(t.app.stickers.count, { count: String(stickersFound), total: String(stickersTotal) })}</small>
             </span>
             <span className="mastery-track" aria-hidden>
-              <span className="mastery-fill" style={{ width: `${stickersTotal ? Math.round((stickersFound / stickersTotal) * 100) : 0}%` }} />
+              <span className="mastery-fill" style={{ "--progress": stickersTotal ? stickersFound / stickersTotal : 0 } as React.CSSProperties} />
             </span>
           </button>
           <div className="organ-list">
@@ -584,16 +575,12 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
       {panel && (
         <SidePanel
           panel={panel}
-          organs={organs}
           organById={organById}
           organId={organId}
           t={t}
           saved={saved}
-          notes={notes}
           onSelect={selectOrgan}
           onToggleSaved={onToggleSaved}
-          onNoteChange={onNoteChange}
-          onOpenNotes={() => setPanel("notes")}
           onClose={() => setPanel(null)}
         />
       )}
@@ -760,8 +747,7 @@ function LessonFlow({ organ, t, lang, onClose }: { organ: Organ; t: UiDictionary
         </>
       ),
     },
-    // Kid mode ends on wonder rather than on disease and citations; the
-    // conditions and sources are still one tap away in the grown-ups panel.
+    // The lesson ends on wonder rather than on disease and citations.
     {
       title: t.app.kids.amazingFacts,
       body: (
@@ -825,32 +811,22 @@ function LessonFlow({ organ, t, lang, onClose }: { organ: Organ; t: UiDictionary
   );
 }
 
-/** Slide-over for Systems / Saved / Notes / Grown-ups. */
+/** Slide-over for Systems / Saved. */
 function SidePanel({
-  panel, organs, organById, organId, t, saved, notes,
-  onSelect, onToggleSaved, onNoteChange, onOpenNotes, onClose,
+  panel, organById, organId, t, saved,
+  onSelect, onToggleSaved, onClose,
 }: {
   panel: Exclude<Panel, null>;
-  organs: Organ[];
   organById: Record<OrganId, Organ>;
   organId: OrganId;
   t: UiDictionary;
   saved: OrganId[];
-  notes: Record<string, string>;
   onSelect: (id: OrganId) => void;
   onToggleSaved: (id: OrganId) => void;
-  onNoteChange: (id: OrganId, text: string) => void;
-  onOpenNotes: () => void;
   onClose: () => void;
 }) {
   const dialogRef = useModalA11y<HTMLElement>(onClose);
-  const title =
-    panel === "systems" ? t.app.systems.title
-    : panel === "saved" ? t.app.saved.title
-    : panel === "grownups" ? t.app.kids.grownupsTitle
-    : t.app.notes.title;
-  const current = organById[organId];
-  const noted = organs.filter((organ) => (notes[organ.id] ?? "").trim().length > 0);
+  const title = panel === "systems" ? t.app.systems.title : t.app.saved.title;
 
   return (
     <div className="modal-backdrop" role="presentation" onMouseDown={onClose}>
@@ -912,62 +888,6 @@ function SidePanel({
           )
         )}
 
-        {panel === "grownups" && (
-          <div className="grownups-panel">
-            <p>{t.app.kids.grownupsIntro}</p>
-            <p className="grownups-privacy">{t.app.kids.privacy}</p>
-
-            <section>
-              <h3>{format(t.app.kids.conditionsTitle, { organ: current.name })}</h3>
-              <p>{t.app.kids.conditionsIntro}</p>
-              <ul className="lesson-conditions">
-                {current.conditions.map((condition) => <li key={condition}>{condition}</li>)}
-              </ul>
-            </section>
-
-            <section>
-              <h3>{t.app.lesson.sources}</h3>
-              <p>{t.app.lesson.sourcesIntro}</p>
-              <ul className="lesson-sources">
-                {current.references.map((reference) => (
-                  <li key={reference.url}>
-                    <a href={reference.url} target="_blank" rel="noreferrer noopener">{reference.label}</a>
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            <button type="button" className="grownups-notes" onClick={onOpenNotes}>
-              <NotebookPen size={15} aria-hidden /> {t.app.notes.title} <ArrowRight size={14} aria-hidden />
-            </button>
-          </div>
-        )}
-
-        {panel === "notes" && (
-          <div className="notes-panel">
-            <label className="notes-current">
-              <b>{organById[organId].name}</b>
-              <textarea
-                value={notes[organId] ?? ""}
-                onChange={(event) => onNoteChange(organId, event.target.value)}
-                placeholder={format(t.app.notes.placeholder, { organ: organById[organId].name })}
-                rows={6}
-              />
-              <small>{t.app.notes.status}</small>
-            </label>
-            {noted.filter((organ) => organ.id !== organId).length > 0 && (
-              <ul className="panel-list">
-                {noted.filter((organ) => organ.id !== organId).map((organ) => (
-                  <li key={organ.id}>
-                    <button type="button" onClick={() => onSelect(organ.id)}>
-                      <span><b>{organ.name}</b><small>{(notes[organ.id] ?? "").slice(0, 60)}</small></span>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        )}
       </aside>
     </div>
   );

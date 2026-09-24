@@ -273,9 +273,11 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
   background: rgba(255,252,247,.92);
   backdrop-filter: blur(10px);
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--hotspot-color), transparent 78%), 0 12px 28px rgba(83,59,42,.12);
-  animation: callout-in .26s cubic-bezier(.2,.85,.3,1);
+  /* Opened often, so a brief fade only; none at all for keyboard selection. */
+  animation: callout-in 120ms cubic-bezier(.23,1,.32,1);
   transition: opacity .2s ease;
 }
+.hotspot-callout[data-instant] .callout-body { animation: none; }
 .hotspot-callout[data-side="right"] .callout-body { left: 22px; }
 .hotspot-callout[data-side="left"] .callout-body { right: 22px; }
 .hotspot-callout[data-behind="true"] .callout-body { opacity: .3; }
@@ -294,8 +296,8 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
 .callout-body b:before { content: ""; position: absolute; inset-inline-start: 12px; top: 15px; width: 7px; height: 7px; border-radius: 50%; background: var(--hotspot-color); }
 .callout-body small { display: block; margin-top: 3px; padding-inline-start: 13px; color: var(--muted); font-size: 10px; line-height: 1.35; }
 .callout-close { position: absolute; top: 6px; inset-inline-end: 6px; width: 20px; height: 20px; display: grid; place-items: center; border: 0; border-radius: 50%; background: transparent; color: var(--muted); cursor: pointer; }
-.callout-close:hover { background: rgba(116,89,67,.09); }
-@keyframes callout-in { from { opacity: 0; transform: translateX(-6px) scale(.96); } }
+@media (hover: hover) and (pointer: fine) { .callout-close:hover { background: rgba(116,89,67,.09); } }
+@keyframes callout-in { from { opacity: 0; } }
 
 .hotspot-index { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
@@ -335,7 +337,7 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
 .info-title-row h1 { margin: 0; font: 500 44px/.95 var(--font-serif), serif; letter-spacing: -.02em; }
 .info-title-row em { display: block; margin-top: 8px; font-size: 13px; }
 .specimen-stamp { width: 86px; height: 86px; display: grid; place-items: center; border-radius: 50%; overflow: hidden; background: radial-gradient(circle, #fff 25%, rgba(237,142,120,.12)); }
-.specimen-stamp img { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; animation: card-art-in .45s cubic-bezier(.2,.8,.3,1); }
+.specimen-stamp img { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; animation: card-art-in 180ms cubic-bezier(.23,1,.32,1); }
 .description { margin: 22px 0 16px; font: 500 15px/1.42 var(--font-serif), serif; }
 .rule { height: 1px; background: var(--line); }
 .info-panel h2 { margin: 17px 0 10px; font-style: italic; font-weight: 500; }
@@ -407,8 +409,8 @@ button:focus-visible, input:focus-visible, canvas:focus-visible {
    card's full width — up to --art-max, which stops wide columns from making
    the cards enormous. `contain` means nothing is ever cut. */
 .organ-card-image { position: relative; overflow: hidden; isolation: isolate; flex: none; width: min(100%, var(--art-max)); max-width: 100%; aspect-ratio: 1; margin: var(--card-gap-top) auto var(--card-gap-bottom); }
-.organ-card-image img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; mix-blend-mode: multiply; animation: card-art-in .52s cubic-bezier(.2,.8,.3,1); }
-@keyframes card-art-in { from { opacity: 0; transform: scale(.96) translateY(4px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+.organ-card-image img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; mix-blend-mode: multiply; animation: card-art-in 180ms cubic-bezier(.23,1,.32,1); }
+@keyframes card-art-in { from { opacity: 0; } }
 /* The tissue swatch is a circular crop by design, so it keeps filling its mask
    and stays square to avoid becoming an ellipse. */
 .microscope-visual { width: min(var(--art-max), 100%); max-height: none; border-radius: 50%; box-shadow: inset 0 0 0 5px rgba(255,255,255,.38), 0 6px 18px rgba(121,72,73,.08); }
@@ -422,7 +424,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
 /* Centred grid items are not stretched, so `height: 100%` would resolve against
    an indefinite row and overflow the card. Pin the artwork to the box instead. */
 .function-visual > img, .function-visual > .art-fallback { position: absolute; inset: 0; }
-.function-pulse { position: absolute; width: 84px; height: 84px; border: 1px solid rgba(235,124,107,.32); border-radius: 50%; animation: organ-pulse 2.2s ease-out infinite; pointer-events: none; }
+.function-pulse { position: absolute; width: 84px; height: 84px; border: 1px solid rgba(235,124,107,.32); border-radius: 50%; animation: organ-pulse 2.2s ease-out 3; pointer-events: none; }
 @keyframes organ-pulse { 0% { opacity: .7; transform: scale(.62); } 80%,100% { opacity: 0; transform: scale(1.35); } }
 .play-badge { position: absolute; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,.8); border-radius: 50%; background: rgba(255,255,255,.7); color: #b4a99f; display: grid; place-items: center; box-shadow: 0 3px 12px rgba(0,0,0,.1); pointer-events: none; }
 /* Same top and bottom gap as an artwork card, so the footer buttons line up. */
@@ -513,8 +515,6 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   }
   .main-nav button { flex: 1; flex-direction: column; gap: 3px; min-height: 54px; padding: 6px 4px; border-radius: 14px; font-size: 12px; }
   .compare-strip { bottom: calc(86px + env(safe-area-inset-bottom, 0px)); }
-  .grownups-button { padding: 0 12px; }
-  .grownups-button span { display: none; }
   .mobile-library-trigger { display: flex; }
   .workspace { display: block; margin-top: 8px; }
   .viewer-shell { height: 68vh; min-height: 520px; border-radius: 22px; }
@@ -561,8 +561,14 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   .specimen-stamp { width: 68px; height: 68px; }
 }
 
+/* Reduced motion means gentler, not none: anything that moves or scales in
+   becomes a short fade (fades help people follow what changed), and loops
+   and purely decorative motion stop. */
+@keyframes fade-in { from { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) {
-  *, *:before, *:after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+  *, *::before, *::after { scroll-behavior: auto !important; }
+  .learning-modal, .quiz-summary, .quiz-answer, .sticker-toast { animation: fade-in 150ms ease-out !important; }
+  .loader-orbit, .function-pulse, .modal-demo.moving img { animation: none !important; }
 }
 
 /* ---------------------------------------------------------------- i18n --- */
@@ -736,12 +742,12 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   cursor: pointer;
   text-align: start;
   font: 500 11px/1.25 var(--font-serif), serif;
-  transition: border-color .18s ease, background .18s ease, transform .18s ease;
+  transition: border-color .18s ease, background .18s ease, transform .18s ease, scale 150ms ease-out;
 }
-.quiz-options button:hover:not(:disabled) {
+@media (hover: hover) and (pointer: fine) { .quiz-options button:hover:not(:disabled) {
   border-color: var(--coral);
   transform: translateY(-1px);
-}
+} }
 .quiz-options button:focus-visible {
   outline: 2px solid var(--coral);
   outline-offset: 2px;
@@ -950,8 +956,8 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   line-height: 1.35;
 }
 .hotspot-index button b { color: var(--ink); font-weight: 600; }
-.hotspot-index button:hover,
 .hotspot-index button:focus-visible { background: rgba(253,234,226,.7); border-color: var(--line); }
+@media (hover: hover) and (pointer: fine) { .hotspot-index button:hover { background: rgba(253,234,226,.7); border-color: var(--line); } }
 .hotspot-index button[aria-pressed="true"] { background: rgba(253,234,226,.9); border-color: var(--coral); }
 
 /* --- loading skeleton for the specimen --- */
@@ -1023,15 +1029,10 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
 .lesson-progress li.on { background: var(--coral); }
 .lesson-step-title { margin: 0 0 8px; font: 500 20px var(--font-serif), serif; }
 .lesson-body { min-height: 190px; }
-.lesson-body p { color: #6e655f; font: 500 14px/1.55 var(--font-serif), serif; }
-.lesson-structures, .lesson-conditions, .lesson-sources { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
-.lesson-structures li { display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 4px 9px; font-size: 13px; }
+.lesson-body p { color: #6e655f; font: 500 14px/1.55 var(--font-serif), serif; }.lesson-structures li { display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 4px 9px; font-size: 13px; }
 .lesson-dot { width: 9px; height: 9px; border-radius: 50%; grid-row: span 2; align-self: center; }
 .lesson-structures small { grid-column: 2; color: var(--muted); font-size: 11px; }
-.lesson-conditions li { padding: 7px 11px; border: 1px solid var(--line); border-radius: 9px; font-size: 12px; background: rgba(255,255,255,.45); }
-.lesson-sources li { font-size: 12px; line-height: 1.5; }
-.lesson-sources a { color: #9a5a48; text-underline-offset: 2px; }
-.lesson-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 20px; }
+.lesson-conditions li { padding: 7px 11px; border: 1px solid var(--line); border-radius: 9px; font-size: 12px; background: rgba(255,255,255,.45); }.lesson-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 20px; }
 .lesson-actions > button:first-child {
   padding: 10px 16px;
   border: 1px solid var(--line);
@@ -1089,11 +1090,14 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   text-align: start;
   color: var(--ink);
 }
-.system-groups button:hover, .panel-list > li > button:first-child:hover,
 .system-groups button:focus-visible, .panel-list > li > button:first-child:focus-visible {
   background: rgba(253,234,226,.6);
   border-color: var(--line);
 }
+@media (hover: hover) and (pointer: fine) { .system-groups button:hover, .panel-list > li > button:first-child:hover {
+  background: rgba(253,234,226,.6);
+  border-color: var(--line);
+} }
 .system-groups button.active { background: rgba(253,234,226,.85); border-color: var(--coral); }
 .side-panel b { display: block; font: 500 15px/1.15 var(--font-serif), serif; }
 .side-panel small { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; }
@@ -1103,26 +1107,8 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   border: 1px solid var(--line); border-radius: 9px;
   background: transparent; cursor: pointer; color: var(--muted);
 }
-.panel-remove:hover { color: #c14f46; }
+@media (hover: hover) and (pointer: fine) { .panel-remove:hover { color: #c14f46; } }
 .panel-empty { color: var(--muted); font-size: 13px; line-height: 1.55; text-align: center; padding: 22px 10px; }
-
-.notes-current { display: block; margin-bottom: 18px; }
-.notes-current textarea {
-  width: 100%;
-  margin-top: 8px;
-  padding: 12px;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: rgba(255,255,255,.6);
-  font: inherit;
-  font-size: 13px;
-  line-height: 1.55;
-  color: var(--ink);
-  resize: vertical;
-}
-.notes-current textarea:focus-visible { outline: 2px solid var(--coral); outline-offset: 1px; }
-.notes-current small { margin-top: 6px; color: var(--muted); font-size: 10px; }
-
 /* --- related organs card --- */
 .related-list { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 5px; }
 .related-list button {
@@ -1138,7 +1124,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   text-align: start;
   color: var(--ink);
 }
-.related-list button:hover { background: rgba(253,234,226,.7); }
+@media (hover: hover) and (pointer: fine) { .related-list button:hover { background: rgba(253,234,226,.7); } }
 .related-list b { display: block; font: 500 14px/1.15 var(--font-serif), serif; }
 .related-list small { display: block; margin-top: 2px; color: var(--muted); font-size: 10px; }
 .related-list button > svg:last-child { margin-inline-start: auto; color: var(--muted); }
@@ -1170,10 +1156,14 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   overflow: hidden;
 }
 .mastery-fill {
+  width: 100%;
   height: 100%;
+  /* Fill by scaling, not by width: width re-runs layout every frame. */
+  transform: scaleX(var(--progress, 0));
+  transform-origin: left center;
   border-radius: 3px;
   background: linear-gradient(90deg, #d98b6a, var(--coral));
-  transition: width .5s cubic-bezier(.2,.85,.3,1);
+  transition: transform 300ms cubic-bezier(.23,1,.32,1);
 }
 .library-mastery small {
   display: block;
@@ -1198,7 +1188,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   text-align: start;
   color: var(--ink);
 }
-.review-cta:hover { background: rgba(253,234,226,.95); }
+@media (hover: hover) and (pointer: fine) { .review-cta:hover { background: rgba(253,234,226,.95); } }
 .review-cta > span:nth-child(2) { flex: 1; }
 .review-cta b { display: block; font: 500 14px/1.2 var(--font-serif), serif; }
 .review-cta small { display: block; margin-top: 2px; color: var(--muted); font-size: 10px; }
@@ -1235,6 +1225,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   .library-mastery { margin-bottom: 10px; }
 }
 
+[dir="rtl"] .mastery-fill { transform-origin: right center; }
 @media (prefers-reduced-motion: reduce) {
   .mastery-fill { transition: none; }
 }
@@ -1259,7 +1250,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
 .authoring-head > b { font-size: 11px; margin-left: auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .authoring-head > em { font-style: normal; font-size: 9px; color: var(--muted); white-space: nowrap; }
 .authoring-progress { height: 3px; margin: 7px 0; overflow: hidden; border-radius: 999px; background: #eadfd5; }
-.authoring-progress span { display: block; height: 100%; border-radius: inherit; background: var(--accent, #ee7c6a); transition: width .2s ease; }
+.authoring-progress span { display: block; height: 100%; border-radius: inherit; background: var(--accent, #ee7c6a); }
 .authoring-copy { display: grid; gap: 2px; min-height: 29px; }
 .authoring-copy strong { font-size: 11px; color: var(--ink); }
 .authoring-copy small { color: var(--muted); font-size: 10px; line-height: 1.35; }
@@ -1276,25 +1267,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
 /* ============================================================== Kid mode
    The audience is 8–12. Body copy moves off 9–11px, and anything tapped
    clears 44px, the smallest target a child's finger hits reliably.
-   ======================================================================= */
-
-.grownups-button {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  height: 44px;
-  padding: 0 14px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(255,255,255,.28);
-  color: var(--ink);
-  cursor: pointer;
-  white-space: nowrap;
-  font: 500 13px var(--font-serif), serif;
-}
-.grownups-button svg { color: var(--lavender); }
-.grownups-button.active { background: rgba(238,124,106,.075); border-color: rgba(215,112,91,.3); }
-.language-switcher { height: 44px; }
+   ======================================================================= */.language-switcher { height: 44px; }
 
 .organ-item small, .side-panel small, .related-list small { font-size: 12px; }
 .panel-heading > span, .info-kicker, .info-panel h2, .learning-cards em, .system-groups h3 { font-size: 11px; }
@@ -1316,29 +1289,6 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
 .facts-card ul { justify-content: flex-start; overflow: auto; line-height: 1.4; }
 .lesson-facts li { font-size: 14px; line-height: 1.45; }
 .lesson-lead { display: block; margin-bottom: 4px; color: var(--ink); }
-
-.grownups-panel p { margin: 0 0 12px; color: #6e655f; font: 500 14px/1.55 var(--font-serif), serif; }
-.grownups-panel .grownups-privacy { padding: 10px 12px; border-radius: 12px; background: rgba(118,157,116,.1); color: #55724f; }
-.grownups-panel section { margin-top: 20px; }
-.grownups-panel h3 { margin: 0 0 8px; font: 500 17px/1.25 var(--font-serif), serif; }
-.grownups-notes {
-  width: 100%;
-  min-height: 44px;
-  margin-top: 22px;
-  padding: 0 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  border: 1px solid var(--line);
-  border-radius: 11px;
-  background: rgba(255,255,255,.5);
-  color: var(--ink);
-  cursor: pointer;
-  font: 500 14px var(--font-serif), serif;
-}
-.grownups-notes svg:last-child { margin-inline-start: auto; }
-[dir="rtl"] .grownups-notes svg:last-child { transform: scaleX(-1); }
-
 /* ================================================== See it in your room (AR)
    The button sits right under "View lesson": it's the most playful thing on
    the page, so it earns a primary-level slot rather than a grid tile.
@@ -1360,7 +1310,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   cursor: pointer;
   font: 500 14px var(--font-sans), sans-serif;
 }
-.ar-button:hover { background: linear-gradient(110deg, rgba(141,107,204,.16), rgba(238,124,106,.12)); }
+@media (hover: hover) and (pointer: fine) { .ar-button:hover { background: linear-gradient(110deg, rgba(141,107,204,.16), rgba(238,124,106,.12)); } }
 
 .ar-sheet .modal-icon { display: grid; place-items: center; color: var(--lavender); }
 .ar-sheet .ar-size { color: var(--ink); font: 500 15px var(--font-serif), serif; }
@@ -1440,7 +1390,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   border-radius: 50%;
   background: var(--coral);
   box-shadow: 0 0 0 0 rgba(235,124,107,.5);
-  animation: daily-pulse 2s ease-out infinite;
+  animation: daily-pulse 2s ease-out 3;
 }
 @keyframes daily-pulse { 70% { box-shadow: 0 0 0 7px rgba(235,124,107,0); } 100% { box-shadow: 0 0 0 0 rgba(235,124,107,0); } }
 
@@ -1488,7 +1438,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   text-align: start;
   font: 500 16px/1.25 var(--font-serif), serif;
 }
-.daily-options button:hover:not(:disabled) { border-color: var(--coral); background: rgba(253,234,226,.7); }
+@media (hover: hover) and (pointer: fine) { .daily-options button:hover:not(:disabled) { border-color: var(--coral); background: rgba(253,234,226,.7); } }
 .daily-options button:disabled { cursor: default; }
 .daily-options button.is-correct { border-color: var(--sage); background: rgba(118,157,116,.16); }
 .daily-options button.is-wrong { border-color: #d98a7d; background: rgba(235,124,107,.1); color: var(--muted); }
@@ -1524,7 +1474,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   cursor: pointer;
   text-align: start;
 }
-.sticker-button:hover { border-color: rgba(214,168,72,.7); }
+@media (hover: hover) and (pointer: fine) { .sticker-button:hover { border-color: rgba(214,168,72,.7); } }
 .sticker-button-row { display: flex; align-items: center; gap: 7px; margin-bottom: 8px; flex-wrap: wrap; }
 .sticker-button-row svg { color: #d6a848; }
 .sticker-button-row b { font: 500 14px var(--font-serif), serif; }
@@ -1561,7 +1511,8 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   color: var(--ink);
   cursor: pointer;
 }
-.sticker:hover, .sticker:focus-visible { background: rgba(253,234,226,.6); }
+.sticker:focus-visible { background: rgba(253,234,226,.6); }
+@media (hover: hover) and (pointer: fine) { .sticker:hover { background: rgba(253,234,226,.6); } }
 .sticker-face {
   position: relative;
   width: 64px;
@@ -1645,7 +1596,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   cursor: pointer;
   font: 500 14px var(--font-sans), sans-serif;
 }
-.hb-button:hover { background: rgba(253,234,226,.85); }
+@media (hover: hover) and (pointer: fine) { .hb-button:hover { background: rgba(253,234,226,.85); } }
 .hb-pill {
   margin-top: 9px;
   min-height: 48px;
@@ -1720,7 +1671,7 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   cursor: pointer;
   vertical-align: middle;
 }
-.speak-button:hover { background: white; border-color: var(--lavender); }
+@media (hover: hover) and (pointer: fine) { .speak-button:hover { background: white; border-color: var(--lavender); } }
 .speak-button.is-active { background: var(--lavender); border-color: var(--lavender); color: white; }
 /* Inside a paragraph the button floats to the reading end, so text wraps
    around it instead of being pushed below. */
@@ -1730,3 +1681,18 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
 .medical-note .speak-button, .fun-note .speak-button { margin-inline-start: auto; align-self: flex-start; }
 /* The word being spoken. */
 .speak-word { background: rgba(246,214,140,.75); color: inherit; border-radius: 3px; padding: 0 1px; }
+
+/* ======================================================== Press and icons
+   Every button presses down slightly, so the app visibly "hears" the tap.
+   Full-screen backdrops and large artwork buttons opt out: shrinking those
+   reads as the page lurching, not as a press. */
+button { transition-property: scale; transition-duration: 150ms; transition-timing-function: ease-out; }
+button:not(:disabled, .drawer-backdrop, .organ-card-image):active { scale: 0.96; }
+@media (prefers-reduced-motion: reduce) {
+  button { transition-duration: 0ms; }
+}
+
+/* Icon stroke follows the weight of the text beside it: 1.5 next to regular
+   text, 2 next to medium labels and on icon-only buttons. */
+svg.lucide { stroke-width: 1.5; }
+:is(.ar-button, .hb-button, .hb-pill, .speak-button, .modal-close, .mobile-library-trigger, .panel-heading button) svg.lucide { stroke-width: 2; }

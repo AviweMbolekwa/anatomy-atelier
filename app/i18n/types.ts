@@ -18,7 +18,6 @@ export type OrganContent = {
   funFact: string;
   tissue: string;
   comparison: string;
-  conditions: string[];
   /** Keyed by hotspot id — the Terminologia Anatomica term is the anchor. */
   hotspots: Record<string, { label: string; detail: string }>;
 };
