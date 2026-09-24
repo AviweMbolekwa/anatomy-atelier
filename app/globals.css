@@ -1704,3 +1704,29 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
   -webkit-box-orient: vertical;
   line-height: 1.2;
 }
+
+/* ============================================================ Read aloud */
+
+.speak-button {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid rgba(141,107,204,.35);
+  border-radius: 50%;
+  background: rgba(255,255,255,.7);
+  color: var(--lavender);
+  cursor: pointer;
+  vertical-align: middle;
+}
+.speak-button:hover { background: white; border-color: var(--lavender); }
+.speak-button.is-active { background: var(--lavender); border-color: var(--lavender); color: white; }
+/* Inside a paragraph the button floats to the reading end, so text wraps
+   around it instead of being pushed below. */
+.description .speak-button,
+.lesson-body p .speak-button,
+.daily-clue .speak-button { float: inline-end; margin-inline-start: 10px; margin-block-end: 4px; }
+.medical-note .speak-button, .fun-note .speak-button { margin-inline-start: auto; align-self: flex-start; }
+/* The word being spoken. */
+.speak-word { background: rgba(246,214,140,.75); color: inherit; border-radius: 3px; padding: 0 1px; }

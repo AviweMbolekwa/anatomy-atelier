@@ -34,6 +34,7 @@ import { ArSheet } from "./ArSheet";
 import { DailySheet, useDailyState } from "./DailySheet";
 import { StickerBook, StickerToast } from "./StickerBook";
 import { HeartbeatSheet } from "./HeartbeatSheet";
+import { SpeakButton, Speakable } from "./ReadAloud";
 import { currentStreak, isAnsweredToday } from "../lib/daily";
 import { organIds, organIdsBySystem, systemIds, type OrganId, type SystemId } from "../lib/anatomy-data";
 import {
@@ -444,7 +445,10 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
               <OrganArt organ={organ} asset="organ" alt="" size={92} />
             </span>
           </div>
-          <p className="description" data-reveal>{organ.description}</p>
+          <p className="description" data-reveal>
+            <SpeakButton id={`${organ.id}:description`} text={organ.description} lang={locale.code} labels={t.app.speech} />
+            <Speakable id={`${organ.id}:description`} text={organ.description} />
+          </p>
           <div className="rule" />
           <h2 data-reveal>{t.info.keyFacts}</h2>
           <dl className="key-facts">
@@ -454,8 +458,16 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
             <div data-reveal><dt><span>⌖</span> {t.info.location}</dt><dd><Measure>{organ.location}</Measure></dd></div>
             <div data-reveal><dt><span>◈</span> {t.info.function}</dt><dd><Measure>{organ.function}</Measure></dd></div>
           </dl>
-          <div className="medical-note" data-reveal><Lightbulb size={16} /><p><b>{t.app.kids.howItWorks}</b>{organ.medical}</p></div>
-          <div className="fun-note" data-reveal><Sparkles size={15} /><p><b>{t.info.didYouKnow}</b>{organ.funFact}</p></div>
+          <div className="medical-note" data-reveal>
+            <Lightbulb size={16} />
+            <p><b>{t.app.kids.howItWorks}</b><Speakable id={`${organ.id}:medical`} text={organ.medical} /></p>
+            <SpeakButton id={`${organ.id}:medical`} text={organ.medical} lang={locale.code} labels={t.app.speech} />
+          </div>
+          <div className="fun-note" data-reveal>
+            <Sparkles size={15} />
+            <p><b>{t.info.didYouKnow}</b><Speakable id={`${organ.id}:funFact`} text={organ.funFact} /></p>
+            <SpeakButton id={`${organ.id}:funFact`} text={organ.funFact} lang={locale.code} labels={t.app.speech} />
+          </div>
           <button className="lesson-button" data-reveal onClick={() => setModal("lesson")}>{t.info.viewLesson} <ArrowRight size={16} /></button>
           <button className="ar-button" data-reveal onClick={() => setArOpen(true)}>
             <Box size={17} aria-hidden /> {t.app.ar.button}
@@ -587,6 +599,7 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
       )}
       {dailyOpen && (
         <DailySheet
+          lang={locale.code}
           organs={organs}
           organById={organById}
           t={t}
@@ -620,7 +633,7 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
         />
       )}
       {arOpen && <ArSheet key={organ.id} organ={organ} t={t} localeCode={locale.code} onClose={() => setArOpen(false)} />}
-      {modal && <LearningModal type={modal} organ={organ} t={t} onClose={() => setModal(null)} />}
+      {modal && <LearningModal type={modal} organ={organ} t={t} lang={locale.code} onClose={() => setModal(null)} />}
       {mobileLibrary && <button className="drawer-backdrop" aria-label={t.library.close} onClick={() => setMobileLibrary(false)} />}
     </main>
   );
@@ -636,11 +649,13 @@ function LearningModal({
   type,
   organ,
   t,
+  lang,
   onClose,
 }: {
   type: Exclude<Modal, null>;
   organ: Organ;
   t: UiDictionary;
+  lang: string;
   onClose: () => void;
 }) {
   const vars = { organ: organ.name, location: organ.location };
@@ -655,7 +670,7 @@ function LearningModal({
 
   // The lesson is a real multi-step flow rather than a single panel, so it
   // gets its own component.
-  if (type === "lesson") return <LessonFlow organ={organ} t={t} onClose={onClose} />;
+  if (type === "lesson") return <LessonFlow organ={organ} t={t} lang={lang} onClose={onClose} />;
 
   return (
     <div className="modal-backdrop" role="presentation" onMouseDown={onClose}>
@@ -706,7 +721,7 @@ function LearningModal({
  * screen with its own content, and the last one credits the sources the
  * medical copy is based on.
  */
-function LessonFlow({ organ, t, onClose }: { organ: Organ; t: UiDictionary; onClose: () => void }) {
+function LessonFlow({ organ, t, lang, onClose }: { organ: Organ; t: UiDictionary; lang: string; onClose: () => void }) {
   const [step, setStep] = useState(0);
   const dialogRef = useModalA11y<HTMLElement>(onClose);
 
@@ -715,7 +730,10 @@ function LessonFlow({ organ, t, onClose }: { organ: Organ; t: UiDictionary; onCl
       title: t.app.lesson.overview,
       body: (
         <>
-          <p>{organ.description}</p>
+          <p>
+            <SpeakButton id={`lesson:${organ.id}:description`} text={organ.description} lang={lang} labels={t.app.speech} />
+            <Speakable id={`lesson:${organ.id}:description`} text={organ.description} />
+          </p>
           <div className="modal-demo"><OrganArt organ={organ} asset="organ" alt="" /></div>
           <dl className="modal-facts">
             <div><dt>{t.modal.system}</dt><dd>{organ.system}</dd></div>
@@ -748,7 +766,11 @@ function LessonFlow({ organ, t, onClose }: { organ: Organ; t: UiDictionary; onCl
       title: t.app.kids.amazingFacts,
       body: (
         <>
-          <p><b className="lesson-lead">{t.app.kids.howItWorks}</b>{organ.medical}</p>
+          <p>
+            <SpeakButton id={`lesson:${organ.id}:medical`} text={organ.medical} lang={lang} labels={t.app.speech} />
+            <b className="lesson-lead">{t.app.kids.howItWorks}</b>
+            <Speakable id={`lesson:${organ.id}:medical`} text={organ.medical} />
+          </p>
           <ul className="lesson-conditions lesson-facts">
             <li><Measure>{organ.funFact}</Measure></li>
             <li><Measure>{organ.dailyFact}</Measure></li>

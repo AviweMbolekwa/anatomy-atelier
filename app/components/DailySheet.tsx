@@ -6,6 +6,7 @@ import type { Organ } from "../i18n/merge";
 import type { OrganId } from "../lib/anatomy-data";
 import { format, type UiDictionary } from "../i18n/types";
 import { useModalA11y } from "../lib/use-modal-a11y";
+import { SpeakButton, Speakable } from "./ReadAloud";
 import { store } from "../lib/storage";
 import {
   DAILY_KEY, answerDaily, currentStreak, ensureTodaysQuestion, isAnsweredToday, localDateKey, parseDailyState,
@@ -19,8 +20,9 @@ export function useDailyState() {
 }
 
 export function DailySheet({
-  organs, organById, t, onClose, onSee,
+  lang, organs, organById, t, onClose, onSee,
 }: {
+  lang: string;
   organs: Organ[];
   organById: Record<OrganId, Organ>;
   t: UiDictionary;
@@ -45,6 +47,24 @@ export function DailySheet({
       ? organById[id as OrganId]?.name ?? id
       : organ?.hotspots.find((hotspot) => hotspot.id === id)?.label ?? id;
   const answerId = question ? (question.kind === "organ" ? question.organId : question.hotspotId) : null;
+
+  // Read the clue, the question and the choices as one passage, so a child
+  // who can't read yet can still play. Offsets let each piece highlight its
+  // own words as they're spoken.
+  const clue = question && organ
+    ? (question.kind === "organ" ? organ[question.fact] : organ.hotspots.find((hotspot) => hotspot.id === question.hotspotId)?.detail ?? "")
+    : "";
+  const prompt = question && organ
+    ? (question.kind === "organ" ? copy.whichOrgan : format(copy.whichPart, { organ: organ.name }))
+    : "";
+  const optionOffsets: number[] = [];
+  let spoken = `${clue}. ${prompt}`;
+  for (const id of question?.options ?? []) {
+    spoken += " ";
+    optionOffsets.push(spoken.length);
+    spoken += `${labelFor(id)}.`;
+  }
+  const passageId = question ? `daily:${question.date}` : "daily";
 
   return (
     <div className="modal-backdrop" role="presentation" onMouseDown={onClose}>
@@ -71,12 +91,11 @@ export function DailySheet({
         {question && organ && (
           <>
             <blockquote className="daily-clue">
-              {question.kind === "organ"
-                ? organ[question.fact]
-                : organ.hotspots.find((hotspot) => hotspot.id === question.hotspotId)?.detail}
+              <SpeakButton id={passageId} text={spoken} lang={lang} labels={t.app.speech} />
+              <Speakable id={passageId} text={clue} />
             </blockquote>
             <h2 id="daily-title">
-              {question.kind === "organ" ? copy.whichOrgan : format(copy.whichPart, { organ: organ.name })}
+              <Speakable id={passageId} text={prompt} offset={clue.length + 2} />
             </h2>
 
             <div className="daily-options" role="group" aria-label={t.app.quiz.optionsLabel}>
@@ -92,7 +111,7 @@ export function DailySheet({
                     disabled={answered}
                     onClick={() => answerDaily(id)}
                   >
-                    {labelFor(id)}
+                    <span><Speakable id={passageId} text={labelFor(id)} offset={optionOffsets[(question.options as string[]).indexOf(id)]} /></span>
                     {answered && isAnswer && <Check size={16} aria-hidden />}
                   </button>
                 );

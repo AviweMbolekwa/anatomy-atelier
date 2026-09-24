@@ -114,6 +114,11 @@ entry in the library prefetches its GLB.
   iPad get AR Quick Look with a USDZ generated from the same GLB, simplified to
   ~50k triangles first so it opens quickly. Desktop explains it needs a phone or
   tablet. WebXR requires HTTPS, so test on a deployed URL, not a LAN `http://` one.
+- **Read aloud** — a speaker button on organ descriptions, facts, lessons and the
+  question of the day, with the spoken word highlighted. Uses the device’s own
+  voices (Web Speech API), and only appears when there is a voice for the page’s
+  language — so isiXhosa and isiZulu aren’t read in the wrong accent where no
+  voice exists. Recorded native-speaker audio is the planned fallback.
 
 ## The learning engine
 
