@@ -503,7 +503,7 @@ export function AnatomyApp({ locale, dictionary }: { locale: LocaleConfig; dicti
         <article className="curiosity-card">
           <span>✿</span><p>{t.library.quoteLine1}<br />{t.library.quoteLine2}</p><em>{t.library.quoteSign}</em>
         </article>
-        <article>
+        <article className="tissue-card">
           <header><div><em>{t.cards.microscopic}</em><h3>{organ.tissue}</h3></div><Microscope size={17} /></header>
           <div className="microscope-visual organ-card-image"><OrganArt organ={organ} asset="microscopic" alt="" /></div>
           <button onClick={() => setModal("lesson")}>{t.cards.exploreTissue} <ArrowRight size={14} /></button>

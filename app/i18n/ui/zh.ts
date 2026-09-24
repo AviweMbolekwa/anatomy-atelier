@@ -42,9 +42,9 @@ export const ui: BaseUiDictionary = {
   },
   cards: {
     resources: "{organ}学习资源",
-    microscopic: "显微视图", compareOrgans: "器官对比", functionAnimation: "功能动画",
+    microscopic: "显微镜下", compareOrgans: "器官对比", functionAnimation: "功能动画",
     clinicalNotes: "临床要点", whereItWorks: "工作部位", commonConditions: "常见疾病",
-    exploreTissue: "探索组织", openComparison: "打开对比", playAnimation: "播放动画",
+    exploreTissue: "凑近看看", openComparison: "打开对比", playAnimation: "播放动画",
     seeAll: "查看全部", seeSystem: "查看该系统",
     playAria: "播放{organ}的功能动画", systemAria: "查看{organ}在人体中的位置",
   },

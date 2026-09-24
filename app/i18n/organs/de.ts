@@ -14,7 +14,7 @@ export const organs: OrganContentDictionary = {
     medical: "Winzige elektrische Signale sagen ihm, wann es sich zusammenziehen soll – so kommt jeder Schlag in der richtigen Reihenfolge.",
     bloodSupply: "Rechte und linke Herzkranzarterie",
     funFact: "Es schlägt im Leben etwa 2,5 Milliarden Mal — und beginnt schon vor der Geburt.",
-    tissue: "Herzmuskelgewebe",
+    tissue: "Herzmuskel ganz nah",
     comparison: "Herz und Gehirn",
     conditions: ["Koronare Herzkrankheit", "Herzrhythmusstörung", "Herzklappenfehler", "Herzinsuffizienz", "Kardiomyopathie", "Myokarditis", "Vorhofflimmern", "Angeborene Herzfehler"],
     hotspots: {
@@ -39,7 +39,7 @@ export const organs: OrganContentDictionary = {
     medical: "Milliarden Nervenzellen schicken sich Nachrichten – mit winzigen elektrischen Funken und chemischen Stoffen.",
     bloodSupply: "Innere Halsschlagadern und Wirbelarterien",
     funFact: "Es besitzt selbst keine Schmerzrezeptoren — Kopfschmerz entsteht im umliegenden Gewebe.",
-    tissue: "Großhirnrinde",
+    tissue: "Gehirnzellen ganz nah",
     comparison: "Gehirn und Auge",
     conditions: ["Migräne", "Schlaganfall", "Neurodegenerative Erkrankung", "Epilepsie", "Schädel-Hirn-Trauma", "Meningitis", "Multiple Sklerose", "Hirnaneurysma"],
     hotspots: {
@@ -62,7 +62,7 @@ export const organs: OrganContentDictionary = {
     medical: "Millionen winziger Luftbläschen darin ergeben zusammen eine Fläche fast so groß wie ein Tennisplatz.",
     bloodSupply: "Lungen- und Bronchialarterien",
     funFact: "Der rechte Lungenflügel hat drei Lappen, der linke nur zwei — Platz für das Herz.",
-    tissue: "Alveolargewebe",
+    tissue: "Winzige Luftbläschen",
     comparison: "Lunge und Herz",
     conditions: ["Asthma", "COPD", "Lungenentzündung", "Lungenembolie", "Lungenfibrose", "Bronchitis", "Mukoviszidose", "Lungenkrebs"],
     hotspots: {
@@ -86,7 +86,7 @@ export const organs: OrganContentDictionary = {
     medical: "Sie erledigt Hunderte Aufgaben gleichzeitig – vom Speichern von Vitaminen bis zur Blutgerinnung.",
     bloodSupply: "Leberarterie und Pfortader",
     funFact: "Sie ist das einzige menschliche Organ, das aus einem Bruchteil seiner selbst wieder volle Größe erreicht.",
-    tissue: "Leberläppchen",
+    tissue: "Leberzellen ganz nah",
     comparison: "Leber und Darm",
     conditions: ["Fettleber", "Hepatitis", "Leberzirrhose", "Gallensteine", "Hämochromatose", "Leberkrebs", "Autoimmunhepatitis", "Pfortaderhochdruck"],
     hotspots: {
@@ -108,7 +108,7 @@ export const organs: OrganContentDictionary = {
     medical: "Jede Niere hat etwa eine Million winziger Filter, die entscheiden, was dein Körper behält und was raus muss.",
     bloodSupply: "Nierenarterien",
     funFact: "Sie holen fast alles Gefilterte zurück — nur 1–2 L verlassen den Körper als Harn.",
-    tissue: "Nierenrinde",
+    tissue: "Winzige Blutfilter",
     comparison: "Nieren und Leber",
     conditions: ["Nierensteine", "Chronische Nierenkrankheit", "Harnwegsinfekt", "Glomerulonephritis", "Zystennieren", "Renale Hypertonie", "Akutes Nierenversagen", "Nephrotisches Syndrom"],
     hotspots: {
@@ -130,7 +130,7 @@ export const organs: OrganContentDictionary = {
     medical: "Die Rückseite deines Auges besteht aus derselben Art Nervengewebe wie dein Gehirn.",
     bloodSupply: "Augenarterie",
     funFact: "Die Hornhaut besitzt keinerlei Blutgefäße — sie nimmt Sauerstoff direkt aus der Luft auf.",
-    tissue: "Netzhautschichten",
+    tissue: "Lichtfangende Zellen",
     comparison: "Auge und Gehirn",
     conditions: ["Kurzsichtigkeit", "Grauer Star", "Grüner Star", "Makuladegeneration", "Netzhautablösung", "Trockenes Auge", "Astigmatismus", "Bindehautentzündung"],
     hotspots: {
@@ -152,7 +152,7 @@ export const organs: OrganContentDictionary = {
     medical: "Innen ist er mit winzigen fingerförmigen Zotten bedeckt, die eine riesige Fläche zum Aufnehmen der Nahrung bilden.",
     bloodSupply: "Obere und untere Gekrösearterie",
     funFact: "Seine Schleimhaut erneuert sich alle paar Tage — schneller als jedes andere Gewebe.",
-    tissue: "Darmzotten",
+    tissue: "Winzige Fingerzotten",
     comparison: "Darm und Leber",
     conditions: ["Reizdarmsyndrom", "Chronisch entzündliche Darmerkrankung", "Zöliakie", "Divertikulitis", "Darmverschluss", "Kolonpolypen", "Morbus Crohn", "Laktoseintoleranz"],
     hotspots: {
@@ -174,7 +174,7 @@ export const organs: OrganContentDictionary = {
     medical: "Winzige Zellgruppen darin bilden Insulin, das deinem Körper hilft, Zucker als Energie zu nutzen.",
     bloodSupply: "Milzarterie und Pankreatikoduodenalarterien",
     funFact: "Nur etwa 2 % bilden Hormone; der Rest ist ganz den Verdauungsenzymen gewidmet.",
-    tissue: "Pankreasazini",
+    tissue: "Saftmachende Zellen",
     comparison: "Bauchspeicheldrüse und Leber",
     conditions: ["Pankreatitis", "Typ-1-Diabetes", "Bauchspeicheldrüsenkrebs", "Typ-2-Diabetes", "Exokrine Insuffizienz", "Pankreaszysten", "Biliäre Pankreatitis", "Insulinom"],
     hotspots: {
@@ -197,7 +197,7 @@ export const organs: OrganContentDictionary = {
     medical: "Sie hat drei Schichten, und jede hat ihre eigene Aufgabe.",
     bloodSupply: "Gefäßgeflecht der Lederhaut",
     funFact: "Ein einziger Quadratzentimeter kann Hunderte Schweißdrüsen und Meter an Blutgefäßen enthalten.",
-    tissue: "Schichten der Oberhaut",
+    tissue: "Hautschichten ganz nah",
     comparison: "Haut und Darm",
     conditions: ["Ekzem", "Schuppenflechte", "Melanom", "Akne", "Wundrose", "Kontaktdermatitis", "Rosazea", "Vitiligo"],
     hotspots: {

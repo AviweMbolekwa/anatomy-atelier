@@ -14,7 +14,7 @@ export const organs: OrganContentDictionary = {
     medical: "Sinyal listrik kecil memberi tahu kapan ia harus meremas, jadi setiap detak terjadi dengan urutan yang benar.",
     bloodSupply: "Arteri koroner kanan dan kiri",
     funFact: "Sepanjang hidup ia berdenyut sekitar 2,5 miliar kali, dan mulai berdenyut sebelum kita lahir.",
-    tissue: "Jaringan otot jantung",
+    tissue: "Otot jantung dari dekat",
     comparison: "Jantung dan otak",
     conditions: ["Penyakit jantung koroner", "Aritmia", "Kelainan katup jantung", "Gagal jantung", "Kardiomiopati", "Miokarditis", "Fibrilasi atrium", "Penyakit jantung bawaan"],
     hotspots: {
@@ -39,7 +39,7 @@ export const organs: OrganContentDictionary = {
     medical: "Miliaran sel saraf saling mengirim pesan dengan percikan listrik kecil dan zat kimia.",
     bloodSupply: "Arteri karotis interna dan vertebralis",
     funFact: "Otak sendiri tidak punya reseptor nyeri — sakit kepala terasa pada jaringan di sekelilingnya.",
-    tissue: "Korteks serebri",
+    tissue: "Sel otak dari dekat",
     comparison: "Otak dan mata",
     conditions: ["Migrain", "Stroke", "Penyakit neurodegeneratif", "Epilepsi", "Cedera otak traumatik", "Meningitis", "Sklerosis multipel", "Aneurisma otak"],
     hotspots: {
@@ -62,7 +62,7 @@ export const organs: OrganContentDictionary = {
     medical: "Jutaan gelembung udara kecil di dalamnya membentuk permukaan hampir seluas lapangan tenis.",
     bloodSupply: "Arteri pulmonalis dan bronkialis",
     funFact: "Paru kanan punya tiga lobus dan paru kiri hanya dua, menyisakan ruang untuk jantung.",
-    tissue: "Jaringan alveolar",
+    tissue: "Kantong udara mungil",
     comparison: "Paru-paru dan jantung",
     conditions: ["Asma", "PPOK", "Pneumonia", "Emboli paru", "Fibrosis paru", "Bronkitis", "Fibrosis kistik", "Kanker paru"],
     hotspots: {
@@ -86,7 +86,7 @@ export const organs: OrganContentDictionary = {
     medical: "Ia melakukan ratusan tugas sekaligus, dari menyimpan vitamin sampai membantu darah membeku.",
     bloodSupply: "Arteri hepatika dan vena porta",
     funFact: "Satu-satunya organ manusia yang bisa tumbuh kembali ke ukuran penuh dari sebagian dirinya.",
-    tissue: "Lobulus hati",
+    tissue: "Sel hati dari dekat",
     comparison: "Hati dan usus",
     conditions: ["Perlemakan hati", "Hepatitis", "Sirosis", "Batu empedu", "Hemokromatosis", "Kanker hati", "Hepatitis autoimun", "Hipertensi portal"],
     hotspots: {
@@ -108,7 +108,7 @@ export const organs: OrganContentDictionary = {
     medical: "Setiap ginjal punya sekitar sejuta saringan mungil yang memutuskan apa yang disimpan tubuh dan apa yang dibuang.",
     bloodSupply: "Arteri renalis",
     funFact: "Hampir semua yang disaring diserap kembali — hanya 1–2 L keluar sebagai urine.",
-    tissue: "Korteks ginjal",
+    tissue: "Saringan darah mungil",
     comparison: "Ginjal dan hati",
     conditions: ["Batu ginjal", "Penyakit ginjal kronis", "Infeksi saluran kemih", "Glomerulonefritis", "Ginjal polikistik", "Hipertensi renal", "Cedera ginjal akut", "Sindrom nefrotik"],
     hotspots: {
@@ -130,7 +130,7 @@ export const organs: OrganContentDictionary = {
     medical: "Bagian belakang matamu terbuat dari jaringan saraf yang sama seperti otakmu.",
     bloodSupply: "Arteri oftalmika",
     funFact: "Kornea sama sekali tidak berpembuluh darah — ia mengambil oksigen langsung dari udara.",
-    tissue: "Lapisan retina",
+    tissue: "Sel penangkap cahaya",
     comparison: "Mata dan otak",
     conditions: ["Rabun jauh", "Katarak", "Glaukoma", "Degenerasi makula", "Ablasi retina", "Mata kering", "Astigmatisme", "Konjungtivitis"],
     hotspots: {
@@ -152,7 +152,7 @@ export const organs: OrganContentDictionary = {
     medical: "Bagian dalamnya penuh tonjolan mungil seperti jari yang membuat permukaannya sangat luas untuk menyerap makanan.",
     bloodSupply: "Arteri mesenterika superior dan inferior",
     funFact: "Lapisannya diperbarui setiap beberapa hari — paling cepat di antara seluruh jaringan tubuh.",
-    tissue: "Vili usus",
+    tissue: "Tonjolan mungil seperti jari",
     comparison: "Usus dan hati",
     conditions: ["Sindrom usus iritabel", "Penyakit radang usus", "Penyakit celiac", "Divertikulitis", "Sumbatan usus", "Polip kolorektal", "Penyakit Crohn", "Intoleransi laktosa"],
     hotspots: {
@@ -174,7 +174,7 @@ export const organs: OrganContentDictionary = {
     medical: "Kelompok sel kecil di dalamnya membuat insulin, yang membantu tubuhmu memakai gula sebagai energi.",
     bloodSupply: "Arteri lienalis dan pankreatikoduodenalis",
     funFact: "Hanya sekitar 2% bagiannya membuat hormon; sisanya untuk enzim pencernaan.",
-    tissue: "Asinus pankreas",
+    tissue: "Sel pembuat cairan",
     comparison: "Pankreas dan hati",
     conditions: ["Pankreatitis", "Diabetes tipe 1", "Kanker pankreas", "Diabetes tipe 2", "Insufisiensi eksokrin", "Kista pankreas", "Pankreatitis bilier", "Insulinoma"],
     hotspots: {
@@ -197,7 +197,7 @@ export const organs: OrganContentDictionary = {
     medical: "Kulit punya tiga lapisan, dan masing-masing punya tugasnya sendiri.",
     bloodSupply: "Pleksus pembuluh dermis",
     funFact: "Satu sentimeter persegi saja bisa memuat ratusan kelenjar keringat dan pembuluh darah sepanjang beberapa meter.",
-    tissue: "Lapisan epidermis",
+    tissue: "Lapisan kulit dari dekat",
     comparison: "Kulit dan usus",
     conditions: ["Eksem", "Psoriasis", "Melanoma", "Jerawat", "Selulitis", "Dermatitis kontak", "Rosasea", "Vitiligo"],
     hotspots: {

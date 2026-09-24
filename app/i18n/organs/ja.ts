@@ -14,7 +14,7 @@ export const organs: OrganContentDictionary = {
     medical: "小さな電気の合図が「いつちぢむか」を伝えるので、どの拍動も正しい順番で起こります。",
     bloodSupply: "左右の冠状動脈",
     funFact: "一生におよそ25億回拍動し、生まれる前から動きはじめています。",
-    tissue: "心筋組織",
+    tissue: "心臓の筋肉をアップで",
     comparison: "心臓と脳",
     conditions: ["冠動脈疾患", "不整脈", "心臓弁膜症", "心不全", "心筋症", "心筋炎", "心房細動", "先天性心疾患"],
     hotspots: {
@@ -39,7 +39,7 @@ export const organs: OrganContentDictionary = {
     medical: "何十億もの神経細胞が、小さな電気の火花と化学物質でメッセージを送り合っています。",
     bloodSupply: "内頸動脈と椎骨動脈",
     funFact: "脳自体に痛覚受容器はなく、頭痛はまわりの組織で感じられています。",
-    tissue: "大脳皮質",
+    tissue: "脳の細胞をアップで",
     comparison: "脳と眼",
     conditions: ["片頭痛", "脳卒中", "神経変性疾患", "てんかん", "外傷性脳損傷", "髄膜炎", "多発性硬化症", "脳動脈瘤"],
     hotspots: {
@@ -62,7 +62,7 @@ export const organs: OrganContentDictionary = {
     medical: "中にある何百万もの小さな空気のふくろを合わせると、テニスコートほどの広さになります。",
     bloodSupply: "肺動脈と気管支動脈",
     funFact: "右肺は3葉、左肺は2葉しかなく、心臓のための場所をあけています。",
-    tissue: "肺胞組織",
+    tissue: "小さな空気のふくろ",
     comparison: "肺と心臓",
     conditions: ["喘息", "COPD", "肺炎", "肺塞栓症", "肺線維症", "気管支炎", "嚢胞性線維症", "肺がん"],
     hotspots: {
@@ -86,7 +86,7 @@ export const organs: OrganContentDictionary = {
     medical: "ビタミンをためたり、血を固まりやすくしたり、何百もの仕事を同時にこなしています。",
     bloodSupply: "肝動脈と門脈",
     funFact: "一部からもとの大きさまで再生できる、人体で唯一の臓器です。",
-    tissue: "肝小葉",
+    tissue: "肝臓の細胞をアップで",
     comparison: "肝臓と腸",
     conditions: ["脂肪肝", "肝炎", "肝硬変", "胆石", "ヘモクロマトーシス", "肝がん", "自己免疫性肝炎", "門脈圧亢進症"],
     hotspots: {
@@ -108,7 +108,7 @@ export const organs: OrganContentDictionary = {
     medical: "腎臓1つに約100万個の小さなフィルターがあり、体に残すものと外に出すものを決めています。",
     bloodSupply: "腎動脈",
     funFact: "ろ過したものはほとんど回収され、尿として出るのは1〜2 Lだけです。",
-    tissue: "腎皮質",
+    tissue: "小さな血液フィルター",
     comparison: "腎臓と肝臓",
     conditions: ["尿路結石", "慢性腎臓病", "尿路感染症", "糸球体腎炎", "多発性嚢胞腎", "腎性高血圧", "急性腎障害", "ネフローゼ症候群"],
     hotspots: {
@@ -130,7 +130,7 @@ export const organs: OrganContentDictionary = {
     medical: "目のおくの部分は、脳と同じ種類の神経の組織でできています。",
     bloodSupply: "眼動脈",
     funFact: "角膜には血管がまったくなく、酸素を空気から直接受け取っています。",
-    tissue: "網膜の各層",
+    tissue: "光をキャッチする細胞",
     comparison: "眼と脳",
     conditions: ["近視", "白内障", "緑内障", "加齢黄斑変性", "網膜剥離", "ドライアイ", "乱視", "結膜炎"],
     hotspots: {
@@ -152,7 +152,7 @@ export const organs: OrganContentDictionary = {
     medical: "内がわは指のような小さなでっぱりでおおわれていて、食べ物を吸収する面がとても広くなっています。",
     bloodSupply: "上腸間膜動脈と下腸間膜動脈",
     funFact: "内側の粘膜は数日ごとに入れ替わり、体のどの組織よりも早く生まれ変わります。",
-    tissue: "腸絨毛",
+    tissue: "指のような小さなでっぱり",
     comparison: "腸と肝臓",
     conditions: ["過敏性腸症候群", "炎症性腸疾患", "セリアック病", "憩室炎", "腸閉塞", "大腸ポリープ", "クローン病", "乳糖不耐症"],
     hotspots: {
@@ -174,7 +174,7 @@ export const organs: OrganContentDictionary = {
     medical: "中にある小さな細胞のかたまりがインスリンをつくり、体が糖をエネルギーに使えるようにします。",
     bloodSupply: "脾動脈と膵十二指腸動脈",
     funFact: "ホルモンをつくるのは全体のわずか2%ほどで、残りはすべて消化酵素のためにあります。",
-    tissue: "膵腺房",
+    tissue: "消化液をつくる細胞",
     comparison: "膵臓と肝臓",
     conditions: ["膵炎", "1型糖尿病", "膵がん", "2型糖尿病", "膵外分泌不全", "膵嚢胞", "胆石性膵炎", "インスリノーマ"],
     hotspots: {
@@ -197,7 +197,7 @@ export const organs: OrganContentDictionary = {
     medical: "皮ふは3つの層でできていて、それぞれに自分の仕事があります。",
     bloodSupply: "真皮の血管叢",
     funFact: "わずか1平方センチメートルに、数百の汗腺と数メートルの血管が収まっていることもあります。",
-    tissue: "表皮の各層",
+    tissue: "皮ふの層をアップで",
     comparison: "皮膚と腸",
     conditions: ["湿疹", "乾癬", "メラノーマ", "尋常性ざ瘡", "蜂窩織炎", "接触皮膚炎", "酒さ", "白斑"],
     hotspots: {

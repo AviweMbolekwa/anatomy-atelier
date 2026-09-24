@@ -14,7 +14,7 @@ export const organs: OrganContentDictionary = {
     medical: "Pequeñas señales eléctricas le indican cuándo apretar, para que cada latido ocurra en el orden correcto.",
     bloodSupply: "Arterias coronarias derecha e izquierda",
     funFact: "Late unos 2500 millones de veces a lo largo de una vida y empieza a hacerlo antes de nacer.",
-    tissue: "Tejido muscular cardíaco",
+    tissue: "El músculo del corazón de cerca",
     comparison: "Corazón y cerebro",
     conditions: ["Enfermedad coronaria", "Arritmia", "Valvulopatías", "Insuficiencia cardíaca", "Miocardiopatía", "Miocarditis", "Fibrilación auricular", "Cardiopatías congénitas"],
     hotspots: {
@@ -39,7 +39,7 @@ export const organs: OrganContentDictionary = {
     medical: "Miles de millones de células nerviosas se pasan mensajes con chispitas de electricidad y sustancias químicas.",
     bloodSupply: "Arterias carótidas internas y vertebrales",
     funFact: "No tiene receptores del dolor propios: el dolor de cabeza se siente en los tejidos que lo rodean.",
-    tissue: "Corteza cerebral",
+    tissue: "Células del cerebro de cerca",
     comparison: "Cerebro y ojo",
     conditions: ["Migraña", "Ictus", "Enfermedad neurodegenerativa", "Epilepsia", "Traumatismo craneoencefálico", "Meningitis", "Esclerosis múltiple", "Aneurisma cerebral"],
     hotspots: {
@@ -62,7 +62,7 @@ export const organs: OrganContentDictionary = {
     medical: "Millones de burbujitas de aire en su interior suman una superficie casi tan grande como una cancha de tenis.",
     bloodSupply: "Arterias pulmonares y bronquiales",
     funFact: "El pulmón derecho tiene tres lóbulos y el izquierdo solo dos, dejando un hueco para el corazón.",
-    tissue: "Tejido alveolar",
+    tissue: "Bolsitas de aire diminutas",
     comparison: "Pulmones y corazón",
     conditions: ["Asma", "EPOC", "Neumonía", "Embolia pulmonar", "Fibrosis pulmonar", "Bronquitis", "Fibrosis quística", "Cáncer de pulmón"],
     hotspots: {
@@ -86,7 +86,7 @@ export const organs: OrganContentDictionary = {
     medical: "Hace cientos de trabajos a la vez, desde guardar vitaminas hasta ayudar a que la sangre coagule.",
     bloodSupply: "Arteria hepática y vena porta",
     funFact: "Es el único órgano humano capaz de recuperar su tamaño completo a partir de una fracción de sí mismo.",
-    tissue: "Lobulillos hepáticos",
+    tissue: "Células del hígado de cerca",
     comparison: "Hígado e intestino",
     conditions: ["Hígado graso", "Hepatitis", "Cirrosis", "Cálculos biliares", "Hemocromatosis", "Cáncer de hígado", "Hepatitis autoinmune", "Hipertensión portal"],
     hotspots: {
@@ -108,7 +108,7 @@ export const organs: OrganContentDictionary = {
     medical: "Cada riñón tiene alrededor de un millón de filtros diminutos que deciden qué se queda en tu cuerpo y qué sale.",
     bloodSupply: "Arterias renales",
     funFact: "Recuperan casi todo lo que filtran: solo 1–2 L salen del cuerpo como orina.",
-    tissue: "Corteza renal",
+    tissue: "Filtros diminutos de sangre",
     comparison: "Riñones e hígado",
     conditions: ["Cálculos renales", "Enfermedad renal crónica", "Infección urinaria", "Glomerulonefritis", "Poliquistosis renal", "Hipertensión renovascular", "Lesión renal aguda", "Síndrome nefrótico"],
     hotspots: {
@@ -130,7 +130,7 @@ export const organs: OrganContentDictionary = {
     medical: "El fondo de tu ojo está hecho del mismo tipo de tejido nervioso que tu cerebro.",
     bloodSupply: "Arteria oftálmica",
     funFact: "La córnea no tiene vasos sanguíneos: toma el oxígeno directamente del aire.",
-    tissue: "Capas de la retina",
+    tissue: "Células que atrapan la luz",
     comparison: "Ojo y cerebro",
     conditions: ["Miopía", "Catarata", "Glaucoma", "Degeneración macular", "Desprendimiento de retina", "Ojo seco", "Astigmatismo", "Conjuntivitis"],
     hotspots: {
@@ -152,7 +152,7 @@ export const organs: OrganContentDictionary = {
     medical: "Por dentro está cubierto de bultitos como dedos que le dan una superficie enorme para absorber la comida.",
     bloodSupply: "Arterias mesentéricas superior e inferior",
     funFact: "Su revestimiento se renueva cada pocos días: la renovación más rápida del cuerpo.",
-    tissue: "Vellosidades intestinales",
+    tissue: "Bultitos como dedos",
     comparison: "Intestino e hígado",
     conditions: ["Síndrome del intestino irritable", "Enfermedad inflamatoria intestinal", "Celiaquía", "Diverticulitis", "Obstrucción intestinal", "Pólipos colorrectales", "Enfermedad de Crohn", "Intolerancia a la lactosa"],
     hotspots: {
@@ -174,7 +174,7 @@ export const organs: OrganContentDictionary = {
     medical: "Pequeños grupos de células en su interior fabrican insulina, que ayuda a tu cuerpo a usar el azúcar como energía.",
     bloodSupply: "Arterias esplénica y pancreatoduodenales",
     funFact: "Apenas el 2 % produce hormonas; el resto se dedica a las enzimas digestivas.",
-    tissue: "Acinos pancreáticos",
+    tissue: "Células que hacen jugos",
     comparison: "Páncreas e hígado",
     conditions: ["Pancreatitis", "Diabetes tipo 1", "Cáncer de páncreas", "Diabetes tipo 2", "Insuficiencia exocrina", "Quistes pancreáticos", "Pancreatitis biliar", "Insulinoma"],
     hotspots: {
@@ -197,7 +197,7 @@ export const organs: OrganContentDictionary = {
     medical: "Tiene tres capas y cada una tiene su propio trabajo.",
     bloodSupply: "Plexo vascular dérmico",
     funFact: "Un solo centímetro cuadrado alberga cientos de glándulas sudoríparas y metros de vasos sanguíneos.",
-    tissue: "Capas epidérmicas",
+    tissue: "Capas de la piel de cerca",
     comparison: "Piel e intestino",
     conditions: ["Eccema", "Psoriasis", "Melanoma", "Acné", "Celulitis infecciosa", "Dermatitis de contacto", "Rosácea", "Vitíligo"],
     hotspots: {

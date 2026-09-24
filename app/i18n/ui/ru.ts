@@ -42,9 +42,9 @@ export const ui: BaseUiDictionary = {
   },
   cards: {
     resources: "Учебные материалы: {organ}",
-    microscopic: "Микроскопия", compareOrgans: "Сравнить органы", functionAnimation: "Анимация функции",
+    microscopic: "Под микроскопом", compareOrgans: "Сравнить органы", functionAnimation: "Анимация функции",
     clinicalNotes: "Клинические заметки", whereItWorks: "Где работает", commonConditions: "Частые заболевания",
-    exploreTissue: "Изучить ткань", openComparison: "Открыть сравнение", playAnimation: "Запустить анимацию",
+    exploreTissue: "Рассмотреть поближе", openComparison: "Открыть сравнение", playAnimation: "Запустить анимацию",
     seeAll: "Показать все", seeSystem: "Открыть систему",
     playAria: "Запустить анимацию функции: {organ}", systemAria: "Посмотреть, где в теле находится {organ}",
   },

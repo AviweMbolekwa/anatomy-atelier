@@ -14,7 +14,7 @@ export const organs: OrganContentDictionary = {
     medical: "Tiny electrical signals tell it when to squeeze, so every beat happens in the right order.",
     bloodSupply: "Left and right coronary arteries",
     funFact: "It beats roughly 2.5 billion times in an average lifetime, and starts before you are born.",
-    tissue: "Cardiac muscle tissue",
+    tissue: "Heart muscle up close",
     comparison: "Heart vs. brain",
     conditions: ["Coronary artery disease", "Arrhythmia", "Heart valve disorders", "Heart failure", "Cardiomyopathy", "Myocarditis", "Atrial fibrillation", "Congenital heart defects"],
     hotspots: {
@@ -39,7 +39,7 @@ export const organs: OrganContentDictionary = {
     medical: "Billions of nerve cells pass messages to each other using tiny sparks of electricity and chemicals.",
     bloodSupply: "Internal carotid and vertebral arteries",
     funFact: "It has no pain receptors of its own — a headache is felt in the tissues around it.",
-    tissue: "Cerebral cortex",
+    tissue: "Brain cells up close",
     comparison: "Brain vs. eye",
     conditions: ["Migraine", "Stroke", "Neurodegenerative disease", "Epilepsy", "Traumatic brain injury", "Meningitis", "Multiple sclerosis", "Brain aneurysm"],
     hotspots: {
@@ -62,7 +62,7 @@ export const organs: OrganContentDictionary = {
     medical: "Millions of tiny air bubbles inside them add up to a surface about as big as a tennis court.",
     bloodSupply: "Pulmonary and bronchial arteries",
     funFact: "The right lung carries three lobes and the left only two, leaving a notch for the heart.",
-    tissue: "Alveolar tissue",
+    tissue: "Tiny air sacs",
     comparison: "Lungs vs. heart",
     conditions: ["Asthma", "COPD", "Pneumonia", "Pulmonary embolism", "Pulmonary fibrosis", "Bronchitis", "Cystic fibrosis", "Lung cancer"],
     hotspots: {
@@ -86,7 +86,7 @@ export const organs: OrganContentDictionary = {
     medical: "It does hundreds of jobs at once, from storing vitamins to helping your blood clot.",
     bloodSupply: "Hepatic artery and portal vein",
     funFact: "It is the only human organ that can regrow to full size from a fraction of itself.",
-    tissue: "Hepatic lobules",
+    tissue: "Liver cells up close",
     comparison: "Liver vs. intestine",
     conditions: ["Fatty liver disease", "Hepatitis", "Cirrhosis", "Gallstones", "Haemochromatosis", "Liver cancer", "Autoimmune hepatitis", "Portal hypertension"],
     hotspots: {
@@ -108,7 +108,7 @@ export const organs: OrganContentDictionary = {
     medical: "Each kidney holds about a million tiny filters that decide what your body keeps and what it gets rid of.",
     bloodSupply: "Renal arteries",
     funFact: "They reclaim almost everything they filter — only about 1–2 L leaves the body as urine.",
-    tissue: "Renal cortex",
+    tissue: "Tiny blood filters",
     comparison: "Kidneys vs. liver",
     conditions: ["Kidney stones", "Chronic kidney disease", "Urinary infection", "Glomerulonephritis", "Polycystic kidney disease", "Renal hypertension", "Acute kidney injury", "Nephrotic syndrome"],
     hotspots: {
@@ -130,7 +130,7 @@ export const organs: OrganContentDictionary = {
     medical: "The back of your eye is made of the same kind of nerve tissue as your brain.",
     bloodSupply: "Ophthalmic artery",
     funFact: "The cornea carries no blood vessels at all; it takes oxygen directly from the air.",
-    tissue: "Retinal layers",
+    tissue: "Light-catching cells",
     comparison: "Eye vs. brain",
     conditions: ["Myopia", "Cataract", "Glaucoma", "Macular degeneration", "Retinal detachment", "Dry eye disease", "Astigmatism", "Conjunctivitis"],
     hotspots: {
@@ -152,7 +152,7 @@ export const organs: OrganContentDictionary = {
     medical: "Its inside is covered in tiny finger-like bumps that give it a huge surface for soaking up food.",
     bloodSupply: "Superior and inferior mesenteric arteries",
     funFact: "Its lining renews itself every few days — the fastest turnover of any tissue in the body.",
-    tissue: "Intestinal villi",
+    tissue: "Tiny finger-like bumps",
     comparison: "Intestine vs. liver",
     conditions: ["Irritable bowel syndrome", "Inflammatory bowel disease", "Celiac disease", "Diverticulitis", "Intestinal obstruction", "Colorectal polyps", "Crohn's disease", "Lactose intolerance"],
     hotspots: {
@@ -174,7 +174,7 @@ export const organs: OrganContentDictionary = {
     medical: "Tiny clusters of cells inside it make insulin, which helps your body use sugar for energy.",
     bloodSupply: "Splenic and pancreaticoduodenal arteries",
     funFact: "Barely 2% of it makes hormones; the rest is given over to digestive enzymes.",
-    tissue: "Pancreatic acini",
+    tissue: "Juice-making cells",
     comparison: "Pancreas vs. liver",
     conditions: ["Pancreatitis", "Type 1 diabetes", "Pancreatic cancer", "Type 2 diabetes", "Exocrine insufficiency", "Pancreatic cysts", "Gallstone pancreatitis", "Insulinoma"],
     hotspots: {
@@ -197,7 +197,7 @@ export const organs: OrganContentDictionary = {
     medical: "It has three layers, and each one has its own job.",
     bloodSupply: "Dermal vascular plexus",
     funFact: "A single square centimetre can hold hundreds of sweat glands and metres of blood vessels.",
-    tissue: "Epidermal layers",
+    tissue: "Skin layers up close",
     comparison: "Skin vs. intestine",
     conditions: ["Eczema", "Psoriasis", "Melanoma", "Acne vulgaris", "Cellulitis", "Contact dermatitis", "Rosacea", "Vitiligo"],
     hotspots: {

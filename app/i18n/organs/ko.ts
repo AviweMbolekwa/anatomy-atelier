@@ -14,7 +14,7 @@ export const organs: OrganContentDictionary = {
     medical: "작은 전기 신호가 언제 오므라들지 알려 줘서, 모든 박동이 올바른 순서로 일어나요.",
     bloodSupply: "좌·우 심장동맥",
     funFact: "일생 동안 약 25억 번 뛰며, 태어나기도 전에 박동을 시작합니다.",
-    tissue: "심장근육 조직",
+    tissue: "가까이서 본 심장 근육",
     comparison: "심장과 뇌",
     conditions: ["관상동맥질환", "부정맥", "심장판막질환", "심부전", "심근병증", "심근염", "심방세동", "선천성 심장질환"],
     hotspots: {
@@ -39,7 +39,7 @@ export const organs: OrganContentDictionary = {
     medical: "수십억 개의 신경세포가 작은 전기 불꽃과 화학 물질로 서로 메시지를 주고받아요.",
     bloodSupply: "속목동맥과 척추동맥",
     funFact: "뇌 자체에는 통증 수용체가 없어, 두통은 주변 조직에서 느껴집니다.",
-    tissue: "대뇌겉질",
+    tissue: "가까이서 본 뇌세포",
     comparison: "뇌와 눈",
     conditions: ["편두통", "뇌졸중", "신경퇴행성 질환", "뇌전증", "외상성 뇌손상", "수막염", "다발성 경화증", "뇌동맥류"],
     hotspots: {
@@ -62,7 +62,7 @@ export const organs: OrganContentDictionary = {
     medical: "안에 있는 수백만 개의 작은 공기 주머니를 모두 합치면 테니스장만큼 넓어요.",
     bloodSupply: "허파동맥과 기관지동맥",
     funFact: "오른허파는 세 엽, 왼허파는 두 엽뿐이라 심장이 들어갈 자리를 내줍니다.",
-    tissue: "허파꽈리 조직",
+    tissue: "작은 공기 주머니",
     comparison: "폐와 심장",
     conditions: ["천식", "만성폐쇄성폐질환", "폐렴", "폐색전증", "폐섬유증", "기관지염", "낭성섬유증", "폐암"],
     hotspots: {
@@ -86,7 +86,7 @@ export const organs: OrganContentDictionary = {
     medical: "비타민을 저장하고 피가 굳도록 돕는 등, 수백 가지 일을 한꺼번에 해요.",
     bloodSupply: "간동맥과 문맥",
     funFact: "일부만 남아도 원래 크기로 되자라는 유일한 사람의 장기입니다.",
-    tissue: "간소엽",
+    tissue: "가까이서 본 간세포",
     comparison: "간과 장",
     conditions: ["지방간", "간염", "간경변", "쓸개돌", "혈색소증", "간암", "자가면역 간염", "문맥고혈압"],
     hotspots: {
@@ -108,7 +108,7 @@ export const organs: OrganContentDictionary = {
     medical: "콩팥 하나에 작은 필터가 약 100만 개 있어서, 몸에 남길 것과 내보낼 것을 정해요.",
     bloodSupply: "콩팥동맥",
     funFact: "걸러낸 것의 거의 전부를 되찾아, 몸 밖으로 나가는 오줌은 1~2 L뿐입니다.",
-    tissue: "콩팥겉질",
+    tissue: "작은 혈액 필터",
     comparison: "콩팥과 간",
     conditions: ["요로결석", "만성콩팥병", "요로감염", "사구체신염", "다낭성 콩팥병", "신성 고혈압", "급성 콩팥손상", "신증후군"],
     hotspots: {
@@ -130,7 +130,7 @@ export const organs: OrganContentDictionary = {
     medical: "눈의 뒤쪽은 뇌와 같은 종류의 신경 조직으로 되어 있어요.",
     bloodSupply: "눈동맥",
     funFact: "각막에는 혈관이 전혀 없어 산소를 공기에서 곧바로 얻습니다.",
-    tissue: "망막의 층",
+    tissue: "빛을 잡는 세포",
     comparison: "눈과 뇌",
     conditions: ["근시", "백내장", "녹내장", "황반변성", "망막박리", "안구건조증", "난시", "결막염"],
     hotspots: {
@@ -152,7 +152,7 @@ export const organs: OrganContentDictionary = {
     medical: "안쪽은 손가락처럼 생긴 작은 돌기로 덮여 있어서, 음식을 흡수할 면적이 아주 넓어요.",
     bloodSupply: "위·아래 창자간막동맥",
     funFact: "속벽은 며칠마다 새로워져, 몸의 어떤 조직보다 빠르게 재생됩니다.",
-    tissue: "창자 융모",
+    tissue: "손가락 같은 작은 돌기",
     comparison: "장과 간",
     conditions: ["과민성 대장 증후군", "염증성 장질환", "셀리악병", "게실염", "장폐색", "대장 폴립", "크론병", "유당불내증"],
     hotspots: {
@@ -174,7 +174,7 @@ export const organs: OrganContentDictionary = {
     medical: "안에 있는 작은 세포 무리가 인슐린을 만들어서, 몸이 당을 에너지로 쓰게 도와요.",
     bloodSupply: "지라동맥과 이자샘창자동맥",
     funFact: "호르몬을 만드는 부분은 전체의 약 2%뿐이고, 나머지는 모두 소화 효소를 위한 것입니다.",
-    tissue: "이자 꽈리",
+    tissue: "소화액을 만드는 세포",
     comparison: "이자와 간",
     conditions: ["췌장염", "제1형 당뇨병", "췌장암", "제2형 당뇨병", "외분비 기능부전", "췌장 낭종", "담석성 췌장염", "인슐린종"],
     hotspots: {
@@ -197,7 +197,7 @@ export const organs: OrganContentDictionary = {
     medical: "피부는 세 층으로 되어 있고, 층마다 맡은 일이 달라요.",
     bloodSupply: "진피 혈관얼기",
     funFact: "단 1제곱센티미터에 수백 개의 땀샘과 몇 미터의 혈관이 들어 있기도 합니다.",
-    tissue: "표피의 층",
+    tissue: "가까이서 본 피부층",
     comparison: "피부와 장",
     conditions: ["습진", "건선", "흑색종", "여드름", "연조직염", "접촉피부염", "주사비", "백반증"],
     hotspots: {

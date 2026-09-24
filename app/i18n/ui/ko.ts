@@ -42,9 +42,9 @@ export const ui: BaseUiDictionary = {
   },
   cards: {
     resources: "{organ} 학습 자료",
-    microscopic: "현미경 소견", compareOrgans: "장기 비교", functionAnimation: "기능 애니메이션",
+    microscopic: "현미경으로 보면", compareOrgans: "장기 비교", functionAnimation: "기능 애니메이션",
     clinicalNotes: "임상 노트", whereItWorks: "작용하는 곳", commonConditions: "흔한 질환",
-    exploreTissue: "조직 살펴보기", openComparison: "비교 열기", playAnimation: "애니메이션 재생",
+    exploreTissue: "더 가까이 보기", openComparison: "비교 열기", playAnimation: "애니메이션 재생",
     seeAll: "전체 보기", seeSystem: "계통 보기",
     playAria: "{organ} 기능 애니메이션 재생", systemAria: "몸에서 {organ}의 위치 보기",
   },

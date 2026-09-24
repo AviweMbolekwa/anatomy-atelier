@@ -7,11 +7,11 @@ import { organs } from "../app/i18n/organs/en.ts";
 import { locales } from "../app/i18n/config.ts";
 import { getDictionary } from "../app/i18n/dictionaries.ts";
 
-const JARGON = /\b(alveol|nephron|hepatic|islets? of langerhans|metabolic|detoxif|electrolyte|microvill|neural|venous|oxygenated|endocrine|exocrine|renal|ophthalmic|mesenteric|lobule)/i;
+const JARGON = /\b(alveol|nephron|hepatic|islets? of langerhans|metabolic|detoxif|electrolyte|microvill|villi|neural|venous|oxygenated|endocrine|exocrine|renal|retinal|ophthalmic|mesenteric|lobule|cardiac|cerebral|acin|epiderm)/i;
 
 test("kid-facing English organ copy avoids clinical jargon", () => {
   for (const [id, organ] of Object.entries(organs)) {
-    for (const field of ["description", "location", "function", "medical"]) {
+    for (const field of ["description", "location", "function", "medical", "tissue"]) {
       assert.doesNotMatch(organ[field], JARGON, `${id}.${field}: "${organ[field]}"`);
     }
     for (const [hotspot, { detail }] of Object.entries(organ.hotspots)) {

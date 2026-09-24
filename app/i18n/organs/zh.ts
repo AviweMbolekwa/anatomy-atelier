@@ -14,7 +14,7 @@ export const organs: OrganContentDictionary = {
     medical: "微小的电信号告诉它什么时候收缩，让每一次心跳都按正确的顺序进行。",
     bloodSupply: "左、右冠状动脉",
     funFact: "一生中约跳动 25 亿次，而且早在出生之前就已开始跳动。",
-    tissue: "心肌组织",
+    tissue: "近看心肌",
     comparison: "心脏与大脑",
     conditions: ["冠状动脉疾病", "心律失常", "心脏瓣膜病", "心力衰竭", "心肌病", "心肌炎", "心房颤动", "先天性心脏病"],
     hotspots: {
@@ -39,7 +39,7 @@ export const organs: OrganContentDictionary = {
     medical: "几十亿个神经细胞用微小的电火花和化学物质互相传递消息。",
     bloodSupply: "颈内动脉与椎动脉",
     funFact: "大脑本身没有痛觉感受器——头痛其实来自它周围的组织。",
-    tissue: "大脑皮质",
+    tissue: "近看脑细胞",
     comparison: "大脑与眼",
     conditions: ["偏头痛", "脑卒中", "神经退行性疾病", "癫痫", "创伤性脑损伤", "脑膜炎", "多发性硬化", "脑动脉瘤"],
     hotspots: {
@@ -62,7 +62,7 @@ export const organs: OrganContentDictionary = {
     medical: "里面几百万个小气泡加起来，面积差不多有一个网球场那么大。",
     bloodSupply: "肺动脉与支气管动脉",
     funFact: "右肺有三叶，左肺只有两叶，为心脏让出了空间。",
-    tissue: "肺泡组织",
+    tissue: "小小的气囊",
     comparison: "肺与心脏",
     conditions: ["哮喘", "慢性阻塞性肺疾病", "肺炎", "肺栓塞", "肺纤维化", "支气管炎", "囊性纤维化", "肺癌"],
     hotspots: {
@@ -86,7 +86,7 @@ export const organs: OrganContentDictionary = {
     medical: "它同时做几百种工作，从储存维生素到帮助血液凝固。",
     bloodSupply: "肝动脉与门静脉",
     funFact: "它是唯一能从自身一小部分重新长回完整体积的人体器官。",
-    tissue: "肝小叶",
+    tissue: "近看肝细胞",
     comparison: "肝脏与肠",
     conditions: ["脂肪肝", "肝炎", "肝硬化", "胆结石", "血色病", "肝癌", "自身免疫性肝炎", "门静脉高压"],
     hotspots: {
@@ -108,7 +108,7 @@ export const organs: OrganContentDictionary = {
     medical: "每个肾里有大约一百万个小过滤器，决定哪些东西留在身体里，哪些排出去。",
     bloodSupply: "肾动脉",
     funFact: "过滤出的液体几乎都被重新吸收——最终只有约 1–2 升成为尿液。",
-    tissue: "肾皮质",
+    tissue: "小小的血液过滤器",
     comparison: "肾脏与肝脏",
     conditions: ["肾结石", "慢性肾脏病", "尿路感染", "肾小球肾炎", "多囊肾", "肾性高血压", "急性肾损伤", "肾病综合征"],
     hotspots: {
@@ -130,7 +130,7 @@ export const organs: OrganContentDictionary = {
     medical: "眼睛后面的部分，和大脑是同一种神经组织做成的。",
     bloodSupply: "眼动脉",
     funFact: "角膜完全没有血管，它直接从空气中获取氧气。",
-    tissue: "视网膜各层",
+    tissue: "捕捉光线的细胞",
     comparison: "眼与大脑",
     conditions: ["近视", "白内障", "青光眼", "黄斑变性", "视网膜脱离", "干眼症", "散光", "结膜炎"],
     hotspots: {
@@ -152,7 +152,7 @@ export const organs: OrganContentDictionary = {
     medical: "它的内壁长满像小手指一样的突起，形成超大的表面来吸收食物。",
     bloodSupply: "肠系膜上、下动脉",
     funFact: "它的内壁每隔几天就更新一次，是全身更新最快的组织。",
-    tissue: "肠绒毛",
+    tissue: "像小手指的突起",
     comparison: "肠与肝脏",
     conditions: ["肠易激综合征", "炎症性肠病", "乳糜泻", "憩室炎", "肠梗阻", "结直肠息肉", "克罗恩病", "乳糖不耐受"],
     hotspots: {
@@ -174,7 +174,7 @@ export const organs: OrganContentDictionary = {
     medical: "里面一小团一小团的细胞会制造胰岛素，帮助身体把糖变成能量。",
     bloodSupply: "脾动脉与胰十二指肠动脉",
     funFact: "仅约 2% 的组织分泌激素，其余都用于制造消化酶。",
-    tissue: "胰腺腺泡",
+    tissue: "制造消化液的细胞",
     comparison: "胰腺与肝脏",
     conditions: ["胰腺炎", "1 型糖尿病", "胰腺癌", "2 型糖尿病", "胰腺外分泌功能不全", "胰腺囊肿", "胆源性胰腺炎", "胰岛素瘤"],
     hotspots: {
@@ -197,7 +197,7 @@ export const organs: OrganContentDictionary = {
     medical: "它有三层，每一层都有自己的工作。",
     bloodSupply: "真皮血管丛",
     funFact: "仅一平方厘米就可能容纳数百个汗腺和数米长的血管。",
-    tissue: "表皮各层",
+    tissue: "近看皮肤的各层",
     comparison: "皮肤与肠",
     conditions: ["湿疹", "银屑病", "黑色素瘤", "痤疮", "蜂窝织炎", "接触性皮炎", "玫瑰痤疮", "白癜风"],
     hotspots: {

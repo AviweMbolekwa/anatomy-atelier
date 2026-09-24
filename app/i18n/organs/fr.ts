@@ -14,7 +14,7 @@ export const organs: OrganContentDictionary = {
     medical: "De petits signaux électriques lui disent quand se contracter, pour que chaque battement se fasse dans le bon ordre.",
     bloodSupply: "Artères coronaires droite et gauche",
     funFact: "Il bat environ 2,5 milliards de fois au cours d'une vie et commence avant la naissance.",
-    tissue: "Tissu musculaire cardiaque",
+    tissue: "Le muscle du cœur de près",
     comparison: "Cœur et cerveau",
     conditions: ["Maladie coronarienne", "Arythmie", "Valvulopathies", "Insuffisance cardiaque", "Cardiomyopathie", "Myocardite", "Fibrillation atriale", "Cardiopathies congénitales"],
     hotspots: {
@@ -39,7 +39,7 @@ export const organs: OrganContentDictionary = {
     medical: "Des milliards de cellules nerveuses s’envoient des messages grâce à de minuscules étincelles électriques et à des substances chimiques.",
     bloodSupply: "Artères carotides internes et vertébrales",
     funFact: "Il ne possède pas de récepteurs de la douleur : le mal de tête se ressent dans les tissus qui l'entourent.",
-    tissue: "Cortex cérébral",
+    tissue: "Les cellules du cerveau de près",
     comparison: "Cerveau et œil",
     conditions: ["Migraine", "AVC", "Maladie neurodégénérative", "Épilepsie", "Traumatisme crânien", "Méningite", "Sclérose en plaques", "Anévrisme cérébral"],
     hotspots: {
@@ -62,7 +62,7 @@ export const organs: OrganContentDictionary = {
     medical: "Des millions de minuscules bulles d’air à l’intérieur forment une surface presque aussi grande qu’un court de tennis.",
     bloodSupply: "Artères pulmonaires et bronchiques",
     funFact: "Le poumon droit compte trois lobes et le gauche seulement deux, pour laisser place au cœur.",
-    tissue: "Tissu alvéolaire",
+    tissue: "De minuscules sacs d’air",
     comparison: "Poumons et cœur",
     conditions: ["Asthme", "BPCO", "Pneumonie", "Embolie pulmonaire", "Fibrose pulmonaire", "Bronchite", "Mucoviscidose", "Cancer du poumon"],
     hotspots: {
@@ -86,7 +86,7 @@ export const organs: OrganContentDictionary = {
     medical: "Il fait des centaines de travaux à la fois, comme stocker des vitamines ou aider le sang à coaguler.",
     bloodSupply: "Artère hépatique et veine porte",
     funFact: "C'est le seul organe humain capable de retrouver sa taille entière à partir d'une fraction de lui-même.",
-    tissue: "Lobules hépatiques",
+    tissue: "Les cellules du foie de près",
     comparison: "Foie et intestin",
     conditions: ["Stéatose hépatique", "Hépatite", "Cirrhose", "Calculs biliaires", "Hémochromatose", "Cancer du foie", "Hépatite auto-immune", "Hypertension portale"],
     hotspots: {
@@ -108,7 +108,7 @@ export const organs: OrganContentDictionary = {
     medical: "Chaque rein contient environ un million de minuscules filtres qui décident de ce que ton corps garde et de ce qu’il rejette.",
     bloodSupply: "Artères rénales",
     funFact: "Ils récupèrent presque tout ce qu'ils filtrent : seuls 1 à 2 L sortent sous forme d'urine.",
-    tissue: "Cortex rénal",
+    tissue: "De minuscules filtres à sang",
     comparison: "Reins et foie",
     conditions: ["Calculs rénaux", "Maladie rénale chronique", "Infection urinaire", "Glomérulonéphrite", "Polykystose rénale", "Hypertension rénovasculaire", "Insuffisance rénale aiguë", "Syndrome néphrotique"],
     hotspots: {
@@ -130,7 +130,7 @@ export const organs: OrganContentDictionary = {
     medical: "Le fond de ton œil est fait du même genre de tissu nerveux que ton cerveau.",
     bloodSupply: "Artère ophtalmique",
     funFact: "La cornée ne contient aucun vaisseau sanguin : elle prend son oxygène directement dans l'air.",
-    tissue: "Couches rétiniennes",
+    tissue: "Des cellules qui captent la lumière",
     comparison: "Œil et cerveau",
     conditions: ["Myopie", "Cataracte", "Glaucome", "Dégénérescence maculaire", "Décollement de rétine", "Sécheresse oculaire", "Astigmatisme", "Conjonctivite"],
     hotspots: {
@@ -152,7 +152,7 @@ export const organs: OrganContentDictionary = {
     medical: "L’intérieur est couvert de minuscules bosses en forme de doigts qui lui donnent une énorme surface pour absorber la nourriture.",
     bloodSupply: "Artères mésentériques supérieure et inférieure",
     funFact: "Sa muqueuse se renouvelle tous les quelques jours : le renouvellement le plus rapide du corps.",
-    tissue: "Villosités intestinales",
+    tissue: "De petites bosses en doigts",
     comparison: "Intestin et foie",
     conditions: ["Syndrome de l'intestin irritable", "Maladie inflammatoire chronique de l'intestin", "Maladie cœliaque", "Diverticulite", "Occlusion intestinale", "Polypes colorectaux", "Maladie de Crohn", "Intolérance au lactose"],
     hotspots: {
@@ -174,7 +174,7 @@ export const organs: OrganContentDictionary = {
     medical: "De petits groupes de cellules à l’intérieur fabriquent l’insuline, qui aide ton corps à utiliser le sucre comme énergie.",
     bloodSupply: "Artères splénique et pancréaticoduodénales",
     funFact: "Environ 2 % seulement fabrique des hormones ; tout le reste est consacré aux enzymes digestives.",
-    tissue: "Acini pancréatiques",
+    tissue: "Des cellules qui font des sucs",
     comparison: "Pancréas et foie",
     conditions: ["Pancréatite", "Diabète de type 1", "Cancer du pancréas", "Diabète de type 2", "Insuffisance exocrine", "Kystes pancréatiques", "Pancréatite biliaire", "Insulinome"],
     hotspots: {
@@ -197,7 +197,7 @@ export const organs: OrganContentDictionary = {
     medical: "Elle a trois couches, et chacune a son propre travail.",
     bloodSupply: "Plexus vasculaire dermique",
     funFact: "Un seul centimètre carré peut contenir des centaines de glandes sudoripares et des mètres de vaisseaux.",
-    tissue: "Couches de l'épiderme",
+    tissue: "Les couches de la peau de près",
     comparison: "Peau et intestin",
     conditions: ["Eczéma", "Psoriasis", "Mélanome", "Acné", "Cellulite infectieuse", "Dermatite de contact", "Rosacée", "Vitiligo"],
     hotspots: {

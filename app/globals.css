@@ -1693,3 +1693,14 @@ button.organ-card-image:focus-visible { outline: 2px solid #8b6fc4; outline-offs
 @media (prefers-reduced-motion: reduce) {
   .hb-beat { animation: none; }
 }
+
+/* The tissue title is a short phrase for kids ("Tiny air sacs"), which runs
+   longer in some languages than the old one-word terms; let it take two
+   lines instead of cutting it off. */
+.learning-cards .tissue-card h3 {
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.2;
+}

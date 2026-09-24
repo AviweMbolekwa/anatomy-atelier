@@ -42,9 +42,9 @@ export const ui: BaseUiDictionary = {
   },
   cards: {
     resources: "Sumber belajar: {organ}",
-    microscopic: "Tampilan mikroskopis", compareOrgans: "Bandingkan organ", functionAnimation: "Animasi fungsi",
+    microscopic: "Di bawah mikroskop", compareOrgans: "Bandingkan organ", functionAnimation: "Animasi fungsi",
     clinicalNotes: "Catatan klinis", whereItWorks: "Tempat bekerjanya", commonConditions: "Penyakit umum",
-    exploreTissue: "Jelajahi jaringan", openComparison: "Buka perbandingan", playAnimation: "Putar animasi",
+    exploreTissue: "Lihat lebih dekat", openComparison: "Buka perbandingan", playAnimation: "Putar animasi",
     seeAll: "Lihat semua", seeSystem: "Lihat sistemnya",
     playAria: "Putar animasi fungsi: {organ}", systemAria: "Lihat letak {organ} di dalam tubuh",
   },
