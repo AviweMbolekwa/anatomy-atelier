@@ -28,9 +28,9 @@ test("organs outrank structures on an equal-quality match", () => {
   assert.equal(results[0].kind, "organ", "an exact organ name should lead");
 });
 
-test("the Latin term is searchable even in a non-Latin locale", async () => {
-  const ja = buildOrgans((await getDictionary("ja")).organs);
-  const results = search(ja, "valva");
+test("the Latin term is searchable in every locale", async () => {
+  const xh = buildOrgans((await getDictionary("xh")).organs);
+  const results = search(xh, "valva");
   assert.ok(results.length > 0, "Terminologia Anatomica terms must be searchable in every locale");
 });
 

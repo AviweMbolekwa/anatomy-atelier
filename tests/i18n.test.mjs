@@ -16,9 +16,9 @@ function* strings(node, path = []) {
   }
 }
 
-test("all 12 configured locales are loadable and distinct", () => {
-  assert.equal(locales.length, 12);
-  assert.equal(new Set(localeCodes).size, 12);
+test("all 4 configured locales are loadable and distinct", () => {
+  assert.equal(locales.length, 4);
+  assert.equal(new Set(localeCodes).size, 4);
 });
 
 for (const { code } of locales) {

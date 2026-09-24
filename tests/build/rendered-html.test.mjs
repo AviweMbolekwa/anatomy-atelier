@@ -42,12 +42,12 @@ test("an unknown locale segment 404s instead of silently falling back", async ()
   assert.equal(response.status, 404);
 });
 
-for (const code of ["en", "es", "ja", "ar"]) {
+for (const code of ["en", "xh", "zu", "af"]) {
   test(`locale "${code}" renders with the right <html lang> and dir`, async () => {
     const response = await render(`/${code}`);
     assert.equal(response.status, 200);
     const html = await response.text();
     assert.match(html, new RegExp(`<html[^>]*lang="${code}"`, "i"));
-    if (code === "ar") assert.match(html, /dir="rtl"/i);
+    assert.match(html, /dir="ltr"/i);
   });
 }

@@ -101,15 +101,15 @@ test("KNOWN GAP: an authored hotspot's label is identical in every locale", asyn
   saveAuthoredHotspot("heart", { ...candidate, position: [0, 0, 0] });
   const authored = { heart: getAuthoredHotspots("heart") };
 
-  const [en, fr, ja] = await Promise.all(
-    ["en", "fr", "ja"].map(async (code) =>
+  const [en, af, zu] = await Promise.all(
+    ["en", "af", "zu"].map(async (code) =>
       buildOrgans((await getDictionary(code)).organs, authored)
         .find((o) => o.id === "heart").hotspots.find((h) => h.id === candidate.id),
     ),
   );
 
-  assert.equal(fr.label, en.label, "documents that French currently shows the English label");
-  assert.equal(ja.label, en.label, "documents that Japanese currently shows the English label");
+  assert.equal(af.label, en.label, "documents that Afrikaans currently shows the English label");
+  assert.equal(zu.label, en.label, "documents that isiZulu currently shows the English label");
 });
 
 test("an organ with no authored hotspots yet still builds normally", async () => {

@@ -6,7 +6,7 @@ import { store } from "./storage";
 /**
  * Question of the day — the reason to open the app tomorrow.
  *
- * Every question is built from content that already exists in all 12 locales
+ * Every question is built from content that already exists in every locale
  * (organ facts, structure descriptions), so the feature costs no new prose.
  * The question is stored as ids, not text: it stays the same all day, and
  * still reads correctly if the child switches language.

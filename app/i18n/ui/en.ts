@@ -3,7 +3,7 @@ import type { BaseUiDictionary } from "../types";
 export const ui: BaseUiDictionary = {
   meta: {
     title: "Anatomy Atelier — Explore the inside of you",
-    description: "Explore the heart, brain, lungs and more in 3D, answer a new body question every day, and see organs life-size in your room. Anatomy for curious kids, in 12 languages.",
+    description: "Explore the heart, brain, lungs and more in 3D, answer a new body question every day, and see organs life-size in your room. Anatomy for curious kids, in English, isiXhosa, isiZulu and Afrikaans.",
     ogTitle: "Anatomy Atelier — Explore the inside of you",
     ogDescription: "3D organs, a daily body question and life-size AR — anatomy for curious kids.",
     imageAlt: "An anatomical heart specimen floating above a plinth, beside the Anatomy Atelier wordmark",

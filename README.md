@@ -2,7 +2,7 @@
 
 An interactive 3D anatomy atlas. Nine organs render as real GLB specimens you
 can rotate, cross-section, isolate and label, wrapped in an illustrated study
-environment that is fully translated into 12 languages.
+environment available in English, isiXhosa, isiZulu and Afrikaans.
 
 Built with Next.js 16 (App Router, RSC) and three.js, deployed to Cloudflare
 Workers via [vinext](https://www.npmjs.com/package/vinext).
@@ -24,7 +24,7 @@ npm run dev          # http://localhost:5173/en
 ```
 
 The root path redirects to a locale, so always visit a localized route such as
-`/en`, `/ja` or `/ar`.
+`/en`, `/xh`, `/zu` or `/af`.
 
 ## Scripts
 
@@ -38,7 +38,7 @@ The root path redirects to a locale, so always visit a localized route such as
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
 | `npm run check:node` | Verify the running Node version |
-| `npm run i18n:audit` | Report translation drift across all 12 locales |
+| `npm run i18n:audit` | Report translation drift across all locales |
 | `npm run i18n:export` | Export dictionaries for external translation |
 
 ## Architecture
@@ -66,7 +66,7 @@ app/
     config.ts          Locale list, direction, script group
     types.ts           Dictionary shapes
     dictionaries.ts    Per-locale dynamic imports
-    extra.ts           Systems/Saved/Notes/Lesson strings, all 12 locales in one file
+    extra.ts           Kids-feature and panel strings, every locale in one file
     merge.ts           Joins structure + prose into the shape components consume
     ui/<locale>.ts     Interface copy
     organs/<locale>.ts Organ prose
@@ -150,7 +150,7 @@ organ (or the same body system when an organ has too few structures):
 | `describe` | The structure's description | Pick the structure |
 
 Modes that would need new per-structure prose (function, spatial relationships)
-are deliberately absent: every such field costs twelve translations.
+are deliberately absent: every such field costs a translation per locale.
 
 ## Accessibility
 
@@ -158,7 +158,7 @@ are deliberately absent: every such field costs twelve translations.
 - Every hotspot is reachable from the keyboard: the structure index is a list of
   real buttons that select the same structure a click on the dot would, and
   `↑`/`↓` step through structures while the canvas has focus (`←`/`→` rotate).
-- All 12 locales set `lang` and `dir`; layout uses logical properties throughout,
+- All locales set `lang` and `dir`; layout uses logical properties throughout,
   and a test fails the build on a single-sided `left`/`right` that would break RTL.
 - Loading, error and empty states are announced (`role="status"` / `role="alert"`).
 - Animation is suppressed under `prefers-reduced-motion`.
@@ -181,7 +181,7 @@ This is a learning tool, not clinical guidance.
 2. Add the entry to `organStructures` in `app/lib/anatomy-data.ts`, including
    `systemId`, `relatedOrganIds` and `references`.
 3. Add its id to the `OrganId` union.
-4. Add prose to all 12 `app/i18n/organs/<locale>.ts` files.
+4. Add prose to every `app/i18n/organs/<locale>.ts` file (en, xh, zu, af).
 5. Run `npm test` — the suite fails on a missing GLB, missing artwork, an
    unknown system, a dangling related id, or an untranslated hotspot.
 
@@ -192,7 +192,7 @@ prints a ready-to-paste coordinate line for each point you sample.
 
 `npm test` runs without a build and covers data integrity (every GLB and image
 actually exists, hotspots are well-formed, systems and citations are
-consistent), i18n parity across all 12 locales, the persistence layer, and
+consistent), i18n parity across all locales, the persistence layer, and
 static accessibility/responsive checks on the components and stylesheet.
 `npm run test:build` additionally builds and server-renders the app.
 

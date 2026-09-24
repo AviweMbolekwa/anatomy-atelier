@@ -8,7 +8,7 @@ import { getReviewQueue, parseStructureKey, structureKey } from "./progress";
  * Every mode here is built from data the atlas already has — hotspot labels,
  * their `detail` prose, and which organ they belong to. Nothing needs new
  * per-structure content, which matters: any field added for a quiz mode has to
- * be written twelve times, once per locale. Modes that would need new prose
+ * be written four times, once per locale. Modes that would need new prose
  * (function, spatial relationships) are deliberately not here yet.
  */
 

@@ -52,8 +52,8 @@ test("extra dictionaries keep English's {placeholders} in every locale", () => {
 });
 
 test("getDictionary merges the extra block onto the UI dictionary", async () => {
-  const dictionary = await getDictionary("fr");
-  assert.equal(dictionary.ui.app.systems.title, extra.fr.systems.title);
+  const dictionary = await getDictionary("xh");
+  assert.equal(dictionary.ui.app.systems.title, extra.xh.systems.title);
   // Existing keys must survive the merge untouched.
   assert.ok(dictionary.ui.nav.explore.length > 0);
 });
