@@ -124,7 +124,7 @@ export const organs: OrganContentDictionary = {
     comparison: "Niere teen lewer",
     hotspots: {
       cortex: { label: "Nierskors", detail: "Buitenste laag, waar filtrering begin" },
-      medulla: { label: "Niermerg", detail: "Binneste deel wat water spaar" },
+      medulla: { label: "Niermerg", detail: "Versteek binne, onder die buitenste laag — dit spaar water" },
       ureter: { label: "Ureter", detail: "Buis wat urine na die blaas dra" },
       "renal-artery": { label: "Nierslagaar", detail: "Bring bloed in om skoongemaak te word" },
       "renal-vein": { label: "Nieraar", detail: "Neem skoon bloed weer uit" },
@@ -171,7 +171,7 @@ export const organs: OrganContentDictionary = {
     tissue: "Klein vingeragtige knoppies",
     comparison: "Ingewande teen lewer",
     hotspots: {
-      duodenum: { label: "Duodenum", detail: "Eerste deel, net ná die maag" },
+      duodenum: { label: "Duodenum", detail: "Eerste deel, net ná die maag — meestal versteek agter die ander" },
       jejunum: { label: "Jejunum", detail: "Waar die meeste kos opgeneem word" },
       colon: { label: "Kolon", detail: "Neem water terug uit oorskiet" },
       ileum: { label: "Ileum", detail: "Laaste en langste deel van die dunderm" },

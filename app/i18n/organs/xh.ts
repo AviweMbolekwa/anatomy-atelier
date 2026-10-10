@@ -124,7 +124,7 @@ export const organs: OrganContentDictionary = {
     comparison: "Izintso nesibindi",
     hotspots: {
       cortex: { label: "Umaleko wangaphandle", detail: "Apho ukuhluza kuqala khona" },
-      medulla: { label: "Inxalenye yangaphakathi", detail: "Igcina amanzi" },
+      medulla: { label: "Inxalenye yangaphakathi", detail: "Ifihlakele ngaphakathi, phantsi komaleko wangaphandle — igcina amanzi" },
       ureter: { label: "I-ureter", detail: "Umbhobho othwala umchamo uye esinyini" },
       "renal-artery": { label: "Umthambo-gazi ongena kwizintso", detail: "Uzisa igazi ukuze licocwe" },
       "renal-vein": { label: "Umthambo-gazi ophuma kwizintso", detail: "Ukhupha igazi elicociweyo" },
@@ -171,7 +171,7 @@ export const organs: OrganContentDictionary = {
     tissue: "Amaqhuma amancinci afana neminwe",
     comparison: "Amathumbu nesibindi",
     hotspots: {
-      duodenum: { label: "I-duodenum", detail: "Inxalenye yokuqala, emva kwesisu" },
+      duodenum: { label: "I-duodenum", detail: "Inxalenye yokuqala, emva kwesisu — ifihlakele ngasemva kwamanye amathumbu" },
       jejunum: { label: "I-jejunum", detail: "Apho kufunxwa khona uninzi lokutya" },
       colon: { label: "Ikholoni", detail: "Ibuyisa amanzi kwintsalela" },
       ileum: { label: "I-ileum", detail: "Inxalenye yokugqibela nende kakhulu yethumbu elincinci" },

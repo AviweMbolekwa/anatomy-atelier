@@ -160,8 +160,11 @@ applies at runtime — none moved more than 0.03. Colour coding on the models
 
 Corrected along the way: `aorta` sat on the superior vena cava (blue), `trachea`
 on the larynx, and the kidneys' `cortex` on the hilum by the renal artery.
-Still worth a human look: the kidneys' `medulla` (internal, its dot lands on
-the renal vessels) and the intestine's `duodenum` (lands on small-bowel loops).
+Two internal-or-unmodelled structures keep their ids (removing one would drop
+stickers learners already earned) but say so: the kidneys' `medulla` dot moved
+off the renal vessels onto the kidney body, and its detail now says it's hidden
+inside; the intestine has no visible duodenal C-loop, so `duodenum` stays near
+where the visible small bowel begins and its detail says it's mostly hidden.
 
 ## What this doesn't replace
 

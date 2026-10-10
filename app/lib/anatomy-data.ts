@@ -165,7 +165,7 @@ export const organStructures: OrganStructure[] = [
     scientificName: "Renes",
     hotspots: [
       { id: "cortex", ta: "Cortex renalis", position: [-1.44, -0.12, 0.7], color: "#ee7c6a" },
-      { id: "medulla", ta: "Medulla renalis", position: [0.85, 0.2, 0.7], color: "#f2a33b" },
+      { id: "medulla", ta: "Medulla renalis", position: [1.15, 0.12, 0.62], color: "#f2a33b" },
       { id: "ureter", ta: "Ureter", position: [0.4, -1.1, 0.5], color: "#6393d8" },
       { id: "renal-artery", ta: "Arteria renalis", position: [-0.4, 0.27, 0.42], color: "#ee7c6a" },
       { id: "renal-vein", ta: "Vena renalis", position: [-0.27, 0.07, 0.07], color: "#6393d8" },

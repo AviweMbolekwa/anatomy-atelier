@@ -124,7 +124,7 @@ export const organs: OrganContentDictionary = {
     comparison: "Kidneys vs. liver",
     hotspots: {
       "cortex": { label: "Renal Cortex", detail: "Outer layer, where filtering starts" },
-      "medulla": { label: "Renal Medulla", detail: "Inner part that saves water" },
+      "medulla": { label: "Renal Medulla", detail: "Hidden inside, under the outer layer — it saves water" },
       "ureter": { label: "Ureter", detail: "Tube that carries urine to the bladder" },
       "renal-artery": { label: "Renal Artery", detail: "Brings blood in to be cleaned" },
       "renal-vein": { label: "Renal Vein", detail: "Takes cleaned blood back out" },
@@ -171,7 +171,7 @@ export const organs: OrganContentDictionary = {
     tissue: "Tiny finger-like bumps",
     comparison: "Intestine vs. liver",
     hotspots: {
-      "duodenum": { label: "Duodenum", detail: "First part, just after the stomach" },
+      "duodenum": { label: "Duodenum", detail: "First part, just after the stomach — mostly hidden behind the others" },
       "jejunum": { label: "Jejunum", detail: "Where most food gets soaked up" },
       "colon": { label: "Colon", detail: "Takes water back from leftovers" },
       "ileum": { label: "Ileum", detail: "Last and longest part of the small intestine" },
