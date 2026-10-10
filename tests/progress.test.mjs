@@ -6,6 +6,7 @@ import {
   getReviewOrgan, getReviewQueue, getWeakStructures, isMastered, masteryOf, parseStructureKey,
   recordAnswer, resetProgress, structureKey,
 } from "../app/lib/progress.ts";
+import { organStructures } from "../app/lib/anatomy-data.ts";
 
 const DAY = 24 * 60 * 60 * 1000;
 
@@ -122,13 +123,14 @@ test("organ mastery aggregates its structures and counts totals correctly", () =
   const before = getOrganMastery("heart");
   assert.equal(before.mastery, 0);
   assert.equal(before.attempted, 0);
-  assert.equal(before.total, 6, "the heart has 6 structures");
+  const heartCount = organStructures.find((o) => o.id === "heart").hotspots.length;
+  assert.equal(before.total, heartCount, `the heart has ${heartCount} structures`);
 
   for (let i = 0; i < 5; i += 1) recordAnswer("heart:aorta", true);
   const after = getOrganMastery("heart");
   assert.equal(after.attempted, 1);
   assert.equal(after.mastered, 1);
-  assert.ok(after.mastery > 0 && after.mastery < 1, "one of six structures is partial mastery");
+  assert.ok(after.mastery > 0 && after.mastery < 1, "one structure of the heart's is partial mastery");
   assert.ok(after.lastSeenAt);
 });
 
@@ -136,7 +138,7 @@ test("overall mastery rises from zero as structures are learned", () => {
   assert.equal(getOverallMastery(), 0);
   for (let i = 0; i < 5; i += 1) recordAnswer("heart:aorta", true);
   assert.ok(getOverallMastery() > 0);
-  assert.ok(getOverallMastery() < 0.2, "one structure of 35 is a small share of the whole");
+  assert.ok(getOverallMastery() < 0.2, "one structure of the whole atlas is a small share");
 });
 
 test("recent organs are ordered by most recently studied", async () => {

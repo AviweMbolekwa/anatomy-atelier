@@ -106,6 +106,8 @@ to confirm by rotating the live model, not a final answer.**
 
 ## What this means for the 81-structure target, organ by organ
 
+> Superseded by the next section for placement results; kept for the reasoning.
+
 Checked by actually rendering and looking, not assumed:
 
 - **Heart** — promising. 6 distinct vessel stumps are visible at the base
@@ -135,6 +137,34 @@ Kidneys, liver, lungs, intestine, pancreas, eyeball haven't been checked yet
 with this tool. Run `render_views.py` on each before authoring — five minutes
 per organ tells you what's actually achievable far more reliably than the
 target-count table in the candidate list does on its own.
+
+## Placed so far (36 structures, 35 → 71)
+
+Every organ was rendered textured and lit (three.js, same `FIT_SIZE`
+normalisation as `loaders.ts`), points were raycast from those renders, and
+each result was run through the same nearest-vertex snapping `hotspots.ts`
+applies at runtime — none moved more than 0.03. Colour coding on the models
+(red arteries, blue veins) is what made vessel identity safe to call.
+
+| organ | added | left as candidates, and why |
+| --- | --- | --- |
+| heart | superior vena cava, pulmonary trunk, pulmonary veins, apex | valves and septum are internal; no IVC opening is modelled |
+| brain | occipital lobe, brainstem | pons/medulla boundary isn't modelled; the rest are deep structures |
+| lungs | larynx, all five lobes, cardiac notch | hilum, pleura, pulmonary vessels and diaphragm aren't modelled |
+| liver | gallbladder, inferior vena cava, hepatic artery | the blue surface tree converges on the portal vein, so "hepatic veins" would be a guess |
+| kidneys | renal artery, renal vein, renal pelvis | uncut kidneys: pyramids, calyces, columns, glomeruli are internal |
+| eyeball | pupil, sclera, an extraocular muscle | lens, retina, choroid and the rest are internal |
+| intestine | ileum, cecum, appendix, ascending/transverse/descending colon, rectum | sigmoid sits on the existing `colon` dot; mesentery and villi aren't modelled |
+| pancreas | uncinate process | no vessels, duodenum or spleen in the model; islets/acini are microscopic |
+| skin | hair shaft, hair bulb, oil gland, sweat gland, arrector pili, blood vessels | cellular layers and pores aren't distinguishable at this scale |
+
+Corrected along the way: `aorta` sat on the superior vena cava (blue), `trachea`
+on the larynx, and the kidneys' `cortex` on the hilum by the renal artery.
+Two internal-or-unmodelled structures keep their ids (removing one would drop
+stickers learners already earned) but say so: the kidneys' `medulla` dot moved
+off the renal vessels onto the kidney body, and its detail now says it's hidden
+inside; the intestine has no visible duodenal C-loop, so `duodenum` stays near
+where the visible small bowel begins and its detail says it's mostly hidden.
 
 ## What this doesn't replace
 
