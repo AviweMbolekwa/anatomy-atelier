@@ -29,10 +29,11 @@ test("every organ has candidates, and existing + candidates reach the 15-structu
   for (const organ of organStructures) {
     const candidates = getHotspotCandidates(organ.id);
     assert.ok(candidates.length > 0, `${organ.id} has no authoring candidates`);
-    assert.equal(
-      organ.hotspots.length + candidates.length,
-      15,
-      `${organ.id}: ${organ.hotspots.length} existing + ${candidates.length} candidates should total 15`,
+    // At least, not exactly: structures placed straight from the geometry
+    // (the larynx, the cardiac notch) were never candidates.
+    assert.ok(
+      organ.hotspots.length + candidates.length >= 15,
+      `${organ.id}: ${organ.hotspots.length} existing + ${candidates.length} candidates should reach 15`,
     );
   }
 });
@@ -114,5 +115,6 @@ test("KNOWN GAP: an authored hotspot's label is identical in every locale", asyn
 
 test("an organ with no authored hotspots yet still builds normally", async () => {
   const organs = buildOrgans((await getDictionary("en")).organs, {});
-  assert.equal(organs.find((o) => o.id === "heart").hotspots.length, 6);
+  const heart = organStructures.find((o) => o.id === "heart");
+  assert.equal(organs.find((o) => o.id === "heart").hotspots.length, heart.hotspots.length);
 });

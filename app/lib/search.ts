@@ -5,7 +5,7 @@ import type { OrganId } from "./anatomy-data";
  * Search across structures, not just organs.
  *
  * Typing "mitral" previously matched nothing, because only organ names,
- * systems and poetic subtitles were searched — the 35 labelled structures
+ * systems and poetic subtitles were searched — the labelled structures
  * were invisible to it. A learner looking up a structure is the most likely
  * search there is, so structures are now first-class results, and matching a
  * structure also surfaces the organ that contains it.
