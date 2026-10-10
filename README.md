@@ -1,6 +1,6 @@
 # Anatomy Atelier
 
-An interactive 3D anatomy atlas. Nine organs render as real GLB specimens you
+An interactive 3D anatomy atlas. Ten organs render as real GLB specimens you
 can rotate, cross-section, isolate and label, wrapped in an illustrated study
 environment available in English, isiXhosa, isiZulu and Afrikaans.
 
@@ -98,7 +98,7 @@ entry in the library prefetches its GLB.
 
 - **Explore** — orbit, zoom, isolate, cross-section, wireframe layers, and a
   Reset that genuinely returns every one of those to its opening state.
-- **Systems** — browse all nine organs grouped by the eight body systems.
+- **Systems** — browse all ten organs grouped by the eight body systems.
 - **Lessons** — a three-step guided flow per organ: overview → structures →
   amazing facts.
 - **Labelling quiz** — the 3D quiz asks for each structure once, marks the real
@@ -181,8 +181,9 @@ This is a learning tool, not clinical guidance.
 
 ## Adding an organ
 
-1. Drop `public/models/<id>.glb` and the five illustrations under
-   `public/anatomy/<id>/`.
+1. Drop `public/models/<id>.glb` and, optionally, the five illustrations
+   under `public/anatomy/<id>/`. Without them set `illustrated: false` and
+   the organ's icon fills every artwork slot.
 2. Add the entry to `organStructures` in `app/lib/anatomy-data.ts`, including
    `systemId`, `relatedOrganIds` and `references`.
 3. Add its id to the `OrganId` union.
@@ -192,6 +193,11 @@ This is a learning tool, not clinical guidance.
 
 To place hotspots, open the viewer with `?authoring=1` and click the model: it
 prints a ready-to-paste coordinate line for each point you sample.
+
+The stomach's model isn't generated or downloaded: `scripts/procedural/stomach.py`
+builds it (shape, painted texture and normal map) from a seed, so it can be
+regenerated or reshaped with `python3 scripts/procedural/stomach.py`
+(needs `numpy` and `Pillow`).
 
 ## Testing
 
@@ -209,7 +215,7 @@ absolute origin used for Open Graph tags.
 
 ## Hotspot authoring (`?authoring=1`)
 
-The V2 content expansion includes a guided hotspot authoring workflow for the existing 9 GLB models. It deliberately does not invent 3D coordinates: the author clicks the real mesh and the viewer raycasts the exact point into pivot space.
+The V2 content expansion includes a guided hotspot authoring workflow for the original 9 GLB models. It deliberately does not invent 3D coordinates: the author clicks the real mesh and the viewer raycasts the exact point into pivot space.
 
 Run the production server, then open `/en?authoring=1` (for example `http://localhost:3000/en?authoring=1`). The authoring panel shows the next structure to place. Click the corresponding anatomical area on the model. The sampled coordinate and structure content are saved to browser local storage. The next candidate then becomes active.
 
