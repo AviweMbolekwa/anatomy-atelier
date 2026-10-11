@@ -22,7 +22,7 @@ async function exists(relativePath) {
 
 test("every organ has a unique id and a corresponding GLB on disk", async () => {
   assert.equal(new Set(organIds).size, organIds.length, "duplicate organ ids");
-  assert.equal(organStructures.length, 9, "expected 9 organs");
+  assert.equal(organStructures.length, 10, "expected 10 organs");
 
   for (const organ of organStructures) {
     assert.ok(organ.model.startsWith("/models/"), `${organ.id} model path looks wrong: ${organ.model}`);

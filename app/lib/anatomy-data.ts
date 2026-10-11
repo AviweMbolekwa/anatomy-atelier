@@ -10,6 +10,7 @@ export type OrganId =
   | "liver"
   | "kidneys"
   | "eyeball"
+  | "stomach"
   | "intestine"
   | "pancreas"
   | "skin";
@@ -195,6 +196,30 @@ export const organStructures: OrganStructure[] = [
     references: [openStax("The Special Senses"), TA_REFERENCE, MEDLINEPLUS],
   },
   {
+    // Built procedurally (scripts/procedural/stomach.py) rather than generated,
+    // so its structure points sit on geometry this repo fully owns.
+    id: "stomach",
+    model: "/models/stomach.glb",
+    icon: "◖",
+    accent: "#e0857a",
+    illustrated: false,
+    scientificName: "Gaster",
+    hotspots: [
+      { id: "oesophagus", ta: "Oesophagus", position: [-0.17, 1.49, 0.09], color: "#d89bc4" },
+      { id: "cardia", ta: "Pars cardiaca gastris", position: [0.06, 0.69, 0.19], color: "#7fa88a" },
+      { id: "fundus", ta: "Fundus gastris", position: [0.81, 1.15, 0.29], color: "#6393d8" },
+      { id: "body", ta: "Corpus gastris", position: [0.69, 0.12, 0.48], color: "#ee7c6a" },
+      { id: "greater-curvature", ta: "Curvatura major gastris", position: [1.35, -0.12, 0.2], color: "#f2a33b" },
+      { id: "lesser-curvature", ta: "Curvatura minor gastris", position: [0.12, -0.12, 0.23], color: "#c58696" },
+      { id: "antrum", ta: "Antrum pyloricum", position: [-0.46, -0.92, 0.43], color: "#f2a33b" },
+      { id: "pylorus", ta: "Pylorus", position: [-0.82, -0.66, 0.24], color: "#6393d8" },
+      { id: "duodenum", ta: "Duodenum", position: [-1.32, -1.27, 0.17], color: "#7fa88a" },
+    ],
+    systemId: "digestive",
+    relatedOrganIds: ["intestine", "pancreas"],
+    references: [openStax("The Digestive System"), TA_REFERENCE, MEDLINEPLUS],
+  },
+  {
     id: "intestine",
     model: "/models/intestine.glb",
     icon: "§",
@@ -214,7 +239,7 @@ export const organStructures: OrganStructure[] = [
       { id: "rectum", ta: "Rectum", position: [0, -1.38, 0.29], color: "#c58696" },
     ],
     systemId: "digestive",
-    relatedOrganIds: ["liver", "pancreas"],
+    relatedOrganIds: ["stomach", "liver", "pancreas"],
     references: [openStax("The Digestive System"), TA_REFERENCE, MEDLINEPLUS],
   },
   {
@@ -302,6 +327,7 @@ export const arSizes: Record<OrganId, ArSize> = {
   liver: { sizeCm: 21, enlarged: false },       // side to side
   kidneys: { sizeCm: 20, enlarged: false },     // the pair with the great vessels between
   eyeball: { sizeCm: 12, enlarged: true },      // really ~2.4 cm
+  stomach: { sizeCm: 25, enlarged: false },     // oesophagus to duodenum, empty
   intestine: { sizeCm: 28, enlarged: false },   // the coiled mass as it sits in the abdomen
   pancreas: { sizeCm: 15, enlarged: false },    // head to tail
   skin: { sizeCm: 20, enlarged: true },         // a magnified section of skin

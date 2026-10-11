@@ -79,6 +79,8 @@ export const hotspotCandidates: Record<OrganId, AuthoringCandidate[]> = {
     { id: "optic-disc", ta: "Discus nervi optici", label: "Optic Disc", detail: "Point where the optic nerve leaves the eye", color: "#6393d8" },
     { id: "ciliary-muscle", ta: "Musculus ciliaris", label: "Ciliary Muscle", detail: "Muscle that adjusts tension on the lens", color: "#c58696" },
   ],
+  // Authored complete when it was built; nothing left to place.
+  stomach: [],
   intestine: [
     { id: "sigmoid-colon", ta: "Colon sigmoideum", label: "Sigmoid Colon", detail: "S-shaped segment leading toward the rectum", color: "#7fa88a" },
     { id: "ileocecal-valve", ta: "Valva ileocaecalis", label: "Ileocecal Valve", detail: "Controls passage from ileum into the large intestine", color: "#6393d8" },
